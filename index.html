@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Portafolio - Programación Numérica</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #4b0082;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    header h1 { font-size: 2rem; }
+    header p { margin-top: 5px; }
+    nav {
+      background: #eee;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #4b0082;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h2 { margin-bottom: 10px; color: #4b0082; }
+    ul.activities { list-style: none; }
+    ul.activities li {
+      background: #f0f0ff;
+      margin: 10px 0;
+      padding: 12px;
+      border-left: 6px solid #4b0082;
+      border-radius: 6px;
+      transition: transform 0.2s ease;
+    }
+    ul.activities li:hover { transform: translateX(5px); }
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      background: #4b0082;
+      color: white;
+      font-size: 0.9rem;
+    }
+    @media (max-width:600px) {
+      header h1 { font-size: 1.5rem; }
+      nav a { display: block; margin: 8px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Portafolio - Programación Numérica</h1>
+    <p>FINESI - Universidad Nacional del Altiplano, Puno</p>
+  </header>
+
+  <nav>
+    <a href="#intro">Inicio</a>
+    <a href="#actividades">Actividades</a>
+    <a href="#about">Sobre mí</a>
+  </nav>
+
+  <main>
+    <section id="intro">
+      <h2>Bienvenido</h2>
+      <p>Este portafolio contiene mis actividades del curso 
+      <strong>Programación Numérica</strong> en FINESI, UNA Puno.</p>
+    </section>
+
+    <section id="actividades" style="margin-top:25px;">
+      <h2>Mis Actividades</h2>
+      <ul class="activities">
+        <li>Actividad 1: Introducción a Python</li>
+        <li>Actividad 2: Estructuras de control</li>
+        <li>Actividad 3: Métodos numéricos básicos</li>
+        <li>Actividad 4: Resolución de ecuaciones no lineales</li>
+        <li>Actividad 5: Interpolación y aproximación</li>
+        <li>Actividad 6: Integración numérica</li>
+        <li>Actividad 7: Método de Euler</li>
+      </ul>
+    </section>
+
+    <section id="about" style="margin-top:25px;">
+      <h2>Sobre mí</h2>
+      <p>Soy estudiante de FINESI en la Universidad Nacional del Altiplano - Puno. 
+      Este portafolio refleja mi progreso en el curso y mi interés en aplicar la 
+      programación para resolver problemas numéricos.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Portafolio Programación Numérica | FINESI - UNA Puno
+  </footer>
+</body>
+</html>
