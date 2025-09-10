@@ -4,108 +4,130 @@
   <meta charset="UTF-8">
   <title>Portafolio - Programación Numérica</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f9;
-      color: #333;
-      line-height: 1.6;
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:Arial, sans-serif;
+      background:#121212;
+      color:#f1f1f1;
+      line-height:1.6;
     }
-    header {
-      background: #4b0082;
-      color: white;
-      text-align: center;
-      padding: 20px;
+    header{
+      background:linear-gradient(90deg,#7b1fa2,#c2185b);
+      color:white;
+      text-align:center;
+      padding:20px;
+      position:relative;
     }
-    header h1 { font-size: 2rem; }
-    header p { margin-top: 5px; }
-    nav {
-      background: #eee;
-      padding: 10px;
-      text-align: center;
+    header h1{font-size:2rem;margin:10px 0;}
+    header p{font-size:0.95rem;}
+    .logos{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:10px;
     }
-    nav a {
-      color: #4b0082;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
+    .logos img{height:80px;}
+    main{
+      max-width:900px;
+      margin:20px auto;
+      padding:20px;
     }
-    nav a:hover { text-decoration: underline; }
-    main {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    section{
+      background:#1e1e2f;
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:25px;
+      box-shadow:0 4px 6px rgba(0,0,0,0.5);
     }
-    h2 { margin-bottom: 10px; color: #4b0082; }
-    ul.activities { list-style: none; }
-    ul.activities li {
-      background: #f0f0ff;
-      margin: 10px 0;
-      padding: 12px;
-      border-left: 6px solid #4b0082;
-      border-radius: 6px;
-      transition: transform 0.2s ease;
+    section h2{
+      color:#ff5252;
+      margin-bottom:10px;
     }
-    ul.activities li:hover { transform: translateX(5px); }
-    footer {
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-      background: #4b0082;
-      color: white;
-      font-size: 0.9rem;
+    ul.activities{list-style:none;}
+    ul.activities li{
+      background:#292943;
+      margin:8px 0;
+      padding:10px;
+      border-left:6px solid #7b1fa2;
+      border-radius:5px;
     }
-    @media (max-width:600px) {
-      header h1 { font-size: 1.5rem; }
-      nav a { display: block; margin: 8px 0; }
+    footer{
+      text-align:center;
+      background:#7b1fa2;
+      padding:15px;
+      margin-top:20px;
+      border-radius:10px 10px 0 0;
+    }
+    @media(max-width:600px){
+      .logos{flex-direction:column;}
+      .logos img{margin:10px 0;}
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Portafolio - Programación Numérica</h1>
-    <p>FINESI - Universidad Nacional del Altiplano, Puno</p>
+    <h3>UNIVERSIDAD NACIONAL DEL ALTIPLANO – FINESI</h3>
+    <p>🌙 Buenas noches, bienvenido a mi portafolio</p>
+    <h1>Portafolio – Programación Numérica</h1>
+    <p><strong>Estudiante:</strong> Roberto Angel Ticona Miramira · 
+       <strong>Docente:</strong> Torres Cruz Fred · 
+       <strong>Sección:</strong> A</p>
+    <div class="logos">
+      <img src="logo_unap.png" alt="Logo UNA Puno">
+      <img src="logo_finesi.png" alt="Logo FINESI">
+    </div>
   </header>
-
-  <nav>
-    <a href="#intro">Inicio</a>
-    <a href="#actividades">Actividades</a>
-    <a href="#about">Sobre mí</a>
-  </nav>
 
   <main>
     <section id="intro">
-      <h2>Bienvenido</h2>
-      <p>Este portafolio contiene mis actividades del curso 
-      <strong>Programación Numérica</strong> en FINESI, UNA Puno.</p>
+      <h2>¿Qué es la Programación Numérica?</h2>
+      <p>
+        La <strong>Programación Numérica</strong> es una rama de la matemática aplicada y 
+        la computación que utiliza métodos algorítmicos para resolver problemas de 
+        forma aproximada pero eficiente. Su importancia radica en que permite abordar 
+        situaciones donde las soluciones exactas son imposibles o muy costosas de calcular, 
+        aplicándose en ingeniería, ciencias aplicadas, economía y más.
+      </p>
+      <p>
+        A través de este portafolio se documentan las actividades y proyectos desarrollados 
+        en el curso, mostrando tanto la teoría como la implementación práctica en distintos 
+        lenguajes de programación.
+      </p>
     </section>
 
-    <section id="actividades" style="margin-top:25px;">
-      <h2>Mis Actividades</h2>
+    <section id="unidad1">
+      <h2>Unidad 1: Fundamentos y Métodos Básicos</h2>
       <ul class="activities">
-        <li>Actividad 1: Introducción a Python</li>
-        <li>Actividad 2: Estructuras de control</li>
+        <li>Actividad 1: Introducción a Python y variables</li>
+        <li>Actividad 2: Condicionales y estructuras de control</li>
         <li>Actividad 3: Métodos numéricos básicos</li>
         <li>Actividad 4: Resolución de ecuaciones no lineales</li>
-        <li>Actividad 5: Interpolación y aproximación</li>
-        <li>Actividad 6: Integración numérica</li>
-        <li>Actividad 7: Método de Euler</li>
       </ul>
     </section>
 
-    <section id="about" style="margin-top:25px;">
+    <section id="unidad2">
+      <h2>Unidad 2: Métodos Avanzados</h2>
+      <ul class="activities">
+        <li>Actividad 5: Interpolación y aproximación polinómica</li>
+        <li>Actividad 6: Integración numérica</li>
+        <li>Actividad 7: Método de Euler y Runge-Kutta</li>
+        <li>Actividad 8: Aplicaciones en ingeniería</li>
+      </ul>
+    </section>
+
+    <section id="about">
       <h2>Sobre mí</h2>
-      <p>Soy estudiante de FINESI en la Universidad Nacional del Altiplano - Puno. 
-      Este portafolio refleja mi progreso en el curso y mi interés en aplicar la 
-      programación para resolver problemas numéricos.</p>
+      <p>
+        Soy estudiante de FINESI en la Universidad Nacional del Altiplano – Puno. 
+        Este portafolio refleja mi progreso en el curso y mi interés por aplicar 
+        la programación en la solución de problemas numéricos que surgen en la ingeniería 
+        y en la vida real.
+      </p>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Portafolio Programación Numérica | FINESI - UNA Puno
+    &copy; 2025 Portafolio de Programación Numérica · FINESI - UNA Puno
   </footer>
 </body>
 </html>
