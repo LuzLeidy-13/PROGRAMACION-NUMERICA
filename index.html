@@ -1,127 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi Portafolio - Programación Numérica</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{
-      font-family:Arial, sans-serif;
-      background:#121212;
-      color:#f1f1f1;
-      line-height:1.6;
-    }
-    header{
-      background:linear-gradient(90deg,#7b1fa2,#c2185b);
-      color:white;
-      text-align:center;
-      padding:20px;
-      position:relative;
-    }
-    header h1{font-size:2rem;margin:10px 0;}
-    header p{font-size:0.95rem;}
-    .logos{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-top:10px;
-    }
-    .logos img{height:80px;}
-    main{
-      max-width:900px;
-      margin:20px auto;
-      padding:20px;
-    }
-    section{
-      background:#1e1e2f;
-      padding:20px;
-      border-radius:10px;
-      margin-bottom:25px;
-      box-shadow:0 4px 6px rgba(0,0,0,0.5);
-    }
-    section h2{
-      color:#ff5252;
-      margin-bottom:10px;
-    }
-    ul.activities{list-style:none;}
-    ul.activities li{
-      background:#292943;
-      margin:8px 0;
-      padding:10px;
-      border-left:6px solid #7b1fa2;
-      border-radius:5px;
-    }
-    footer{
-      text-align:center;
-      background:#7b1fa2;
-      padding:15px;
-      margin-top:20px;
-      border-radius:10px 10px 0 0;
-    }
-    @media(max-width:600px){
-      .logos{flex-direction:column;}
-      .logos img{margin:10px 0;}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Portafolio Programación Numérica</title>
+    <style>
+        /* GENERAL */
+body {
+    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #322a38, #0c010f,#322a38);
+    color: #5e5a5a;
+}
+
+/* ENCABEZADO */
+header {
+    border-bottom: 3px solid #4b0082;
+    padding: 25px 35px;
+    background: #3a074799;
+}
+
+.header-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.logo {
+    width: 230px;
+    height: auto;
+}
+
+.titulo h1 {
+    margin: 0;
+    font-size: 45px;
+    color: #eeebf0;
+}
+.titulo h2, .titulo h3 {
+    margin: 3px 2;
+    font-size: 30px;
+}
+
+.contenedor {
+    margin: auto;
+    color: #eeebf0;
+    
+}
+
+/* CONTENEDORES */
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    gap: 60px;
+}
+
+.caja {
+    flex: 1;
+    background: rgba(85, 28, 90, 0.603);
+    padding: 50px;
+    border: 2px solid #41255c;
+    border-radius: 40px;
+}
+
+
+.datos-flex {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.foto {
+    width: 120px;
+    border-radius: 80%;
+    border: 2px solid #0c0c0c;
+}
+
+/* BOTONES */
+.unidades {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.boton {
+    display: inline-block;
+    margin: 40px;
+    padding: 30px 60px;
+    background: #593274a3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background: #6a0dad;
+}
+
+    </style>
 </head>
 <body>
-  <header>
-    <h3>UNIVERSIDAD NACIONAL DEL ALTIPLANO – FINESI</h3>
-    <p> Hola! Bienvenido a mi portafolio</p>
-    <h1>Portafolio – Programación Numérica</h1>
-    <p><strong>Estudiante:</strong> QUISPE ITO LUZ LEIDY · 
-       <strong>Docente:</strong> TORRES CRUZ FRED · 
-       <strong>Sección:</strong> A</p>
 
-  </header>
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="header-contenido">
+            <img src="img.html/logo_unap.png" alt="Logo Universidad" class="logo">
+            
+            <div class="titulo">
+                <h1>Universidad Nacional del Altiplano</h1>
+                <h2>Facultad de Ingeniería Estadística e Informática</h2>
+                <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
+                <h2>--Bienvenido a mi portafolio--</h2>
+                <h1>PORGRAMACION NUMERICA</h1>
+            
+        
+            </div>
 
-  <main>
-    <section id="intro">
-      <h2>¿Qué es la Programación Numérica?</h2>
-      <p>
-        La <strong>Programación Numérica</strong> La programación numérica es el uso de algoritmos para encontrar soluciones aproximadas 
-        a problemas matemáticos complejos que no pueden resolverse de forma analítica o exacta.
-      </p>
-      <p>
-        A través de este portafolio se documentan las actividades y proyectos desarrollados 
-        en el curso, mostrando tanto la teoría como la implementación práctica en distintos 
-        lenguajes de programación.
-      </p>
+            <img src="img.html/logo_finesi.png" alt="Logo Facultad" class="logo">
+        </div>
+    </header>
+
+    <!-- DATOS PERSONALES Y DEL CURSO -->
+    <section class="contenedor">
+        <!-- Datos personales -->
+        <div class="caja">
+            <h1>Datos Personales</h1>
+            <div class="datos-flex">
+                <img src="img.html/perfil_estudiante.jpg" alt="Foto del estudiante" class="foto">
+                <div>
+                    <h2><strong>Nombre:</strong> QUISPE ITO LUZ LEIDY</h2>
+                    <h2><strong>Código:</strong> 240291</h2>
+                    <h2><strong>Correo:</strong> quispeitoluzleidy@gmail.com</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Datos del curso -->
+        <div class="caja">
+            <h1>Sobre el Curso</h1>
+            <h2><strong>Docente:</strong> TORRES CRUZ FRED</h2>
+            <h2><strong>Semestre:</strong> 2025-I</h2>
+            <h2><strong>Grupo:</strong> A</h2>
+        </div>
     </section>
 
-    <section id="unidad1">
-      <h2>Unidad 1</h2>
-      <ul class="activities">
-        <li>Actividad 1: Introducción a Python y variables</li>
-        <li>Actividad 2: Condicionales y estructuras de control</li>
-        <li>Actividad 3: Métodos numéricos básicos</li>
-        <li>Actividad 4: Resolución de ecuaciones no lineales</li>
-      </ul>
+    <!-- INTRODUCCIÓN -->
+    <section class="caja">
+        <h1>Introducción al curso</h1>
+        <h2>Numerical Programming is a branch of applied mathematics and computing that uses algorithmic methods
+             to solve mathematical problems in an approximate but efficient way. Its importance lies in the fact
+              that it allows addressing situations where exact solutions are impossible or too costly to compute,
+               being applied in engineering, applied sciences, economics, and more</h2>
     </section>
 
-    <section id="unidad2">
-      <h2>Unidad 2</h2>
-      <ul class="activities">
-        <li>Actividad 5: Interpolación y aproximación polinómica</li>
-        <li>Actividad 6: Integración numérica</li>
-        <li>Actividad 7: Método de Euler y Runge-Kutta</li>
-        <li>Actividad 8: Aplicaciones en ingeniería</li>
-      </ul>
+    <!-- BOTONES DE UNIDADES -->
+    <section class="unidades">
+        <a href="unidad1.html" class="boton">Unidad I</a>
+           
+        <a href="unidad2.html" class="boton">Unidad II</a>
     </section>
 
-    <section id="about">
-      <h2>Sobre mí</h2>
-      <p>
-        Soy estudiante de FINESI en la Universidad Nacional del Altiplano – Puno. 
-        Este portafolio refleja mi progreso en el curso y mi interés por aplicar 
-        la programación en la solución de problemas numéricos que surgen en la ingeniería 
-        y en la vida real.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Portafolio de Programación Numérica · FINESI - UNA Puno
-  </footer>
 </body>
 </html>
