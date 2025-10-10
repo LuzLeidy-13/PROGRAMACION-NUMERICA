@@ -1,112 +1,278 @@
 <!DOCTYPE html>
 <html lang="es">
-    <style>
-        /* GENERAL */
+<head>
+<meta charset="UTF-8">
+<title>Unidad 1 - Programación Numérica</title>
+<style>
+/* GENERAL */
 body {
-    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
-    background: linear-gradient(to right, #4b1872, #0c010f,#2e074c);
-    color: #cf9df3;
+    background: linear-gradient(to right, #0c010f, #2e074c,#0c010f);
+    color: #b0aeb0;
 }
 
 /* ENCABEZADO */
 header {
     border-bottom: 3px solid #757476;
-    padding: 25px 35px;
-    background: linear-gradient(#76198e99,#2e074c)
+    padding: 20px 65px;
+    background: linear-gradient(#76198e99, #1d0231);
 }
-
 .header-contenido {
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: center;
 }
-
 .logo {
-    width: 230px;
+    width: 180px;
     height: auto;
 }
-
 .titulo h1 {
     margin: 0;
-    font-size: 45px;
+    font-size: 40px;
     color: #f7f2fa;
 }
 .titulo h2, .titulo h3 {
     margin: 3px 2;
-    font-size: 25px;
+    font-size: 22px;
 }
 
-.contenedor {
-    margin: auto;
-    color: #ce9fed;
-    
-}
-
-/* BOTONES */
+/* BOTONES PRINCIPALES */
 .unidades {
     text-align: center;
     margin: 20px 0;
 }
-
 .boton {
-    display: inline-block;
-    margin: 10px;
-    padding: 20px 350px;
-    background: #593274a3;
+    display: block;              /* cada botón ocupa toda la línea */
+    width: 70%;                  /* mismo ancho para todos */
+    max-width: 700px;            /* límite opcional */
+    margin: 10px auto;           /* centra horizontalmente */
+    padding: 20px 0;             /* mismo padding arriba y abajo */
+    background: #37174ea3;
     color: rgb(219, 182, 237);
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
+    text-align: center;          /* centra el texto */
     transition: 0.3s;
+    cursor: pointer;
 }
-
 .boton:hover {
     background: #1c072b;
 }
 
+/* CONTENIDO DE TRABAJO */
+.caja {
+    text-align: center;
+    padding: 20px;
+}
+.contenido {
+    margin: 10px auto;
+    width: 100%;
+    max-width: 900px;
+    background: #1c072b;
+    border-radius: 15px;
+    padding: 20px;
+    display: none;
+}
+iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+#codigoFrame {
+    height: 300px;
+}
 
+/* BOTONES DE DESCARGA Y CIERRE */
+.descargas {
+    text-align: center;
+}
+.descargas a, .cerrar {
+    background-color: #5f1589;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    display: inline-block;
+}
+.descargas a:hover, .cerrar:hover {
+    background-color: #6d2f90;
+}
 
-
-    </style>
+/* TÍTULO FIJO DEL TRABAJO */
+#tituloTrabajo {
+    text-align: center;
+    font-size: 28px;
+    color: #f0e0ff;
+    background-color: #4b1872c4;
+    padding: 15px;
+    margin: 0;
+    display: none;
+    font-weight: bold;
+    border-top: 2px solid #676668;
+    border-bottom: 2px solid #777678;
+}
+</style>
+</head>
 
 <body>
 
-    <!-- ENCABEZADO -->
-    <header>
-        <div class="header-contenido">
-            <img src="logo_unap.png" alt="Logo Universidad" class="logo">
-            
-            <div class="titulo">
-                <h1>Universidad Nacional del Altiplano</h1>
-                <h2>Facultad de Ingeniería Estadística e Informática</h2>
-                <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
-                <h2>PROGRAMACIÓN NUMÉRICA - Unidad 1</h2>
-            </div>
-
-            <img src="logo_finesi.png" alt="Logo Facultad" class="logo">
+<header>
+    <div class="header-contenido">
+        <img src="logo_unap.png" alt="Logo Universidad" class="logo">
+        <div class="titulo">
+            <h1>Universidad Nacional del Altiplano</h1>
+            <h2>Facultad de Ingeniería Estadística e Informática</h2>
+            <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
+            <h2>PROGRAMACIÓN NUMÉRICA - Unidad 1</h2>
         </div>
-    </header>
-
-    <!-- CONTENIDO DE UNIDAD 1 -->
-    <section class="caja">
-        <h2>              TRABAJOS ENCARGADOS DURANTE LA UNIDAD I</h2>
-       
-    </section>
-    <section>
-        <section class="unidades">
-        <a href="unidad1.pdf.pdf" class="boton">TRABAJO 1- Reconocer funciones 
-        </a>
-        <a href="graficar funciones lineales.py" class="boton">TRABAJO 2- Grficar funciones</a>
-    </section>
-
-    </section>
-
-    <!-- BOTÓN DE REGRESAR -->
-    <div class="unidades">
-        <a href="index.html" class="boton">⬅ Regresar al Portafolio</a>
+        <img src="logo_finesi.png" alt="Logo Facultad" class="logo">
     </div>
+</header>
+
+<!-- NUEVO: TÍTULO DEL TRABAJO SELECCIONADO -->
+<h2 id="tituloTrabajo"></h2>
+
+<section class="caja">
+    <h2>TRABAJOS ENCARGADOS DURANTE LA UNIDAD I</h2>
+</section>
+
+<!-- BOTONES PRINCIPALES -->
+<section class="unidades" id="menuPrincipal">
+    <button class="boton" onclick="mostrarTrabajo('t1', 'TRABAJO 1 - Reconocer funciones')">TRABAJO 1 - Reconocer funciones</button>
+    <button class="boton" onclick="mostrarTrabajo('t2', 'TRABAJO 2 - Graficar funciones lineales ')">TRABAJO 2 - Graficar funciones Lineales</button>
+    <button class="boton" onclick="mostrarTrabajo('t3', 'TRABAJO 3 - Rstricciones y Sistemas de Ecuaciones')">TRABAJO 3 - Restricciones y Sistemas de Ecuaciones</button>
+    <button class="boton" onclick="mostrarTrabajo('t4', 'TRABAJO 4 - Metodo Numericos (Biseccion)')">TRABAJO 4 - Método Numericos (Biseccion)</button>
+    <button class="boton" onclick="mostrarTrabajo('t5', 'TRABAJO 5 - Metodo de Newton Raphson')">TRABAJO 5 - Metodo Newton Raphon</button>
+</section>
+
+<!-- TRABAJO 1 -->
+<div id="t1" class="contenido">
+    <iframe id="codigoFrame" src="reconocimiento de funciones.py"></iframe>
+    <div class="descargas">
+        <a href="unidad1.pdf.pdf" target="_blank"> 📄 Ver PDF</a>
+        <a href="reconocimiento de funciones.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <div style="text-align:center;">
+        <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+    </div>
+</div>
+
+<!-- TRABAJO 2 -->
+<div id="t2" class="contenido">
+    <iframe id="codigoFrame" src="graficar funciones lineales.py"></iframe>
+    <div class="descargas">
+        <a href="trabajo2.pdf" target="_blank"> 📄 Ver PDF</a>
+        <a href="trabajo2.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <div style="text-align:center;">
+        <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+    </div>
+</div>
+
+<!-- TRABAJO 3 -->
+<div id="t3" class="contenido">
+    <h3 style="text-align:center;">Ejercicios Propuesto</h3>
+    <p style="text-align:center; color:rgb(219,182,237); font-size:18px; max-width:800px; margin:auto;">
+    <h5 style="text-align:left;">1-Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de front-end (x) y back-end (y). Además:
+• Debe dedicar al menos 5 horas al desarrollo de front-end para cumplir con los entregables del cliente.
+• El tiempo total no puede exceder 15 horas por restricciones de tiempo del sprint.
+Formule las restricciones, represéntelas gráficamente e identifique las combinaciones posibles de tiempo a invertir en cada actividad.</h5>  
+     <h5 style="text-align:left;">2-Un ingeniero de datos administra dos tipos de servidores en la nube: Servidores A y Servidores B. El costo por hora de Servidor A es S/3 y de Servidor B es S/5. El presupuesto máximo semanal asignado para mantener los servidores es de S/20.
+Determine cuántas horas puede mantener activos cada tipo de servidor, formule el sistema de ecuaciones y represéntelo gráficamente.</h5> 
+<h5 style="text-align:left;">3-Un administrador de proyectos tecnológicos organiza su tiempo entre reuniones con stakeholders (x) y trabajo en la documentación técnica (y). Las reuniones requieren al menos 4 horas semanales y la documentación al menos 6 horas. Si dispone de 12 horas para ambas actividades,
+determine la región factible y analice las combinaciones posibles de tiempo.</h5> 
+<h5 style="text-align:left;">4-Una empresa de desarrollo de videojuegos produce dos tipos de assets: Modelos 3D (P₁) y Texturas (P₂). Cada modelo 3D requiere 2 horas de trabajo y cada textura requiere 3 horas. El equipo de arte tiene un total de 18 horas disponibles semanalmente.
+Formule las restricciones, represéntelas gráficamente y determine cuántos assets de cada tipo pueden producirse en función del tiempo disponible.
+</h5> 
+<h5 style="text-align:left;">5-Una startup de hardware dispone de un máximo de 50 unidades de componentes electrónicos. Para ensamblar un dispositivo tipo A se necesitan 5 unidades y para un dispositivo tipo B se necesitan 10 unidades.
+Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 unidades de componentes. Formule el problema, resuélvalo gráficamente y explique las posibles combinaciones de producción.</h5> 
+     
+    <iframe id="codigoFrame" src="ejercicos1.py"></iframe>
+
+    <div class="descargas">
+        <a href="ejercicios_programacion_numerica (2).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="ejercicos1.py" download>⬇ Descargar Código Python</a>
+    </div>
+
+    <div style="text-align:center;">
+        <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+    </div>
+</div>
+
+
+<!-- TRABAJO 4 -->
+<div id="t4" class="contenido">
+    <h1 style="text-align:center;"> Metodos Numericos para Encontrar Raices</h1>
+    <p style="text-align:center; color:rgb(219,182,237); font-size:18px;">
+       Los metodos numericos para la resolucion de ecuaciones no lineales constituyen un
+pilar fundamental dentro de la programacion numerica y el analisis computacional. Su
+objetivo principal es aproximar las raices de funciones de la forma f(x) = 0, problema
+que aparece de manera recurrente en diversas areas de la ciencia y la ingenieria.
+En el ambito de la Ciencia de Datos y la Computacion, estos metodos resultan esenciales para abordar tareas de optimizacion, calibracion de modelos, 
+ajuste de parametros y resolucion de problemas donde no es posible obtener soluciones analiticas exactas. Ademas,
+su implementacion computacional permite garantizar eficiencia, estabilidad y precision en
+el procesamiento de grandes volumenes de informacion y en el desarrollo de algoritmos
+aplicados a problemas reales.
+    </p>
+    <h1 style="text-align:center;"> Metodo de biseccion</h1>
+
+    <div class="descargas">
+        <a href="PROG (1) (1).pdf" target="_blank"> 📄 Ver PDF</a>
+    </div>
+    <div style="text-align:center;">
+        <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+    </div>
+</div>
+
+<!-- TRABAJO 5 -->
+<div id="t5" class="contenido">
+    <iframe id="codigoFrame" src="newton-raphson1.py"></iframe>
+    <div class="descargas">
+        <a href="Metodo-NewtonRaphson-luz leidy.pdf" target="_blank"> 📄 Ver PDF</a>
+        <a href="newton-raphson1.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <div style="text-align:center;">
+        <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+    </div>
+</div>
+
+<!-- BOTÓN DE REGRESAR -->
+<div class="unidades">
+    <a href="index.html" class="boton">⬅ Regresar al Portafolio</a>
+</div>
+
+<script>
+function mostrarTrabajo(id, nombre) {
+    document.getElementById("menuPrincipal").style.display = "none";
+    document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+    
+    // Mostrar el título del trabajo arriba
+    const titulo = document.getElementById("tituloTrabajo");
+    titulo.textContent = nombre;
+    titulo.style.display = 'block';
+
+    window.scrollTo({ top: 250, behavior: 'smooth' });
+}
+
+function cerrarTrabajo() {
+    document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
+    document.getElementById("menuPrincipal").style.display = 'block';
+    
+    // Ocultar el título del trabajo
+    const titulo = document.getElementById("tituloTrabajo");
+    titulo.style.display = 'none';
+    titulo.textContent = "";
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
