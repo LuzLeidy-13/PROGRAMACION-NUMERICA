@@ -48,10 +48,9 @@ header {
 }
 
 .header-contenido {
-  display: flex; justify-content: space-between;
-  align-items: center; flex-wrap: wrap;
-  display: grid;
+  display: grid; 
   grid-template-columns: auto 1fr auto;
+  align-items: center; flex-wrap: wrap; padding: 0 20px;
 }
 
 .logo { width: 180px; height: auto; }
@@ -70,7 +69,7 @@ header {
     letter-spacing: 2px;
 }
 .titulo .titulo-curso{
-  font-size: 45px;
+  font-size: 38px;
   color:#676567;
 }
 
@@ -115,10 +114,14 @@ header {
 
 /* 📱 RESPONSIVE */
 @media (max-width: 768px) {
-  .header-contenido { flex-direction: column; gap: 10px;padding: 10px; }
-  .logo { width: 120px; }
-  .titulo h1 { font-size: 22px; }
-  .titulo h2, .titulo .linea-principal{font-size: 18px;} .titulo h3 { font-size: 14px; }
+  .header-contenido { padding: 0 5px; }
+  .logo { width: 90px; }
+  .titulo h1 { font-size: 18px; }
+  .titulo h2, .titulo .linea-principal{font-size: 20px; letter-spacing: 1px; font-weight: 700;} 
+  .titulo h3 { font-size: 10px; }
+  .titulo{
+    min-width: 0;
+  }
   .boton { width: 90%; text-align: center; }
 }
 </style>
