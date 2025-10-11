@@ -2,42 +2,57 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Unidad 1 - Programación Numérica</title>
+<title>Unidad 1 - Programacion Numerica</title>
 <style>
 /* GENERAL */
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0;
-    background: linear-gradient(to right, #0c010f, #2e074c,#0c010f);
-    color: #b0aeb0;
+     font-family: 'Gill Sans MT', Calibri, sans-serif;
+  margin: 0;
+  background: linear-gradient(to right, #0c010f, #2e074c, #0c010f);
+  color: #b0aeb0;
+  animation: fadeIn 1.5s ease-in;
+   
 }
 
-/* ENCABEZADO */
+/* 🔝 MENÚ FIJO */
+.nav-simple {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(17, 1, 26, 0.97);
+  border-bottom: 2px solid #676567;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.nav-simple ul {
+  margin: 0; padding: 10px 20px;
+  display: flex; justify-content: flex-end; gap: 25px;
+  list-style: none;
+}
+.nav-simple a {
+  color: #fff; text-decoration: none;
+  font-weight: bold; padding: 8px 14px;
+  border-radius: 8px; transition: 0.3s;
+}
+.nav-simple a:hover { background: #2d0531; }
+
+/* 🏫 ENCABEZADO */
 header {
-    border-bottom: 3px solid #757476;
-    padding: 20px 65px;
-    background: linear-gradient(#76198e99, #1d0231);
+  border-bottom: 3px solid #757476;
+  background: linear-gradient(#000, #190118, #280441);
+  padding: 20px 40px;
+  text-align: center;
 }
 .header-contenido {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-}
-.logo {
-    width: 180px;
-    height: auto;
-}
-.titulo h1 {
-    margin: 0;
-    font-size: 40px;
-    color: #f7f2fa;
-}
-.titulo h2, .titulo h3 {
-    margin: 3px 2;
-    font-size: 22px;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
 }
 
+.logo { width: 180px; height: auto; }
+.titulo h1 { margin: 0; color: #f7f2fa; font-size: 40px; }
+.titulo h2 { margin: 0; color:#62537f; font-size: 35px;}
+.titulo h3 { margin: 4px 0; font-size: 20px; color: #7c6583;
+}
 /* BOTONES PRINCIPALES */
 .unidades {
     text-align: center;
@@ -45,11 +60,11 @@ header {
 }
 .boton {
     display: block;              /* cada botón ocupa toda la línea */
-    width: 70%;                  /* mismo ancho para todos */
-    max-width: 700px;            /* límite opcional */
+    width: 90%;                  /* mismo ancho para todos */
+    max-width: 1200px;            /* límite opcional */
     margin: 10px auto;           /* centra horizontalmente */
     padding: 20px 0;             /* mismo padding arriba y abajo */
-    background: #37174ea3;
+    background: linear-gradient(#2e074c,#190118);
     color: rgb(219, 182, 237);
     text-decoration: none;
     border-radius: 10px;
@@ -122,12 +137,22 @@ iframe {
 
 <body>
 
+    <!-- 🌐 MENÚ -->
+<nav class="nav-simple">
+  <ul>
+    <li><a href="index.html">FINESI</a></li>
+    <li><a href="unidad1.html">UNIDAD I</a></li>
+    <li><a href="unidad2.html">UNIDAD II</a></li>
+  </ul>
+</nav>
+
+
 <header>
     <div class="header-contenido">
         <img src="logo_unap.png" alt="Logo Universidad" class="logo">
         <div class="titulo">
             <h1>Universidad Nacional del Altiplano</h1>
-            <h2>Facultad de Ingeniería Estadística e Informática</h2>
+            <h3>Facultad de Ingeniería Estadística e Informática</h3>
             <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
             <h2>PROGRAMACIÓN NUMÉRICA - Unidad 1</h2>
         </div>
@@ -139,7 +164,7 @@ iframe {
 <h2 id="tituloTrabajo"></h2>
 
 <section class="caja">
-    <h2>TRABAJOS ENCARGADOS DURANTE LA UNIDAD I</h2>
+    <h3>TRABAJOS ENCARGADOS DURANTE LA UNIDAD I</h3>
 </section>
 
 <!-- BOTONES PRINCIPALES -->
@@ -165,10 +190,10 @@ iframe {
 
 <!-- TRABAJO 2 -->
 <div id="t2" class="contenido">
-    <iframe id="codigoFrame" src="graficar funciones lineales.txt"></iframe>
+    <iframe id="codigoFrame" src="graficarfuncioneslineales-tarea2.txt"></iframe>
     <div class="descargas">
-        <a href="trabajo2.pdf" target="_blank"> 📄 Ver PDF</a>
-        <a href="trabajo2.py" download>⬇ Descargar Código Python</a>
+        <a href="graficadora_de_funciones_lineales_tarea2.pdf" target="_blank"> 📄 Ver PDF</a>
+        <a href="graficadora lineales-tarea2.py" download>⬇ Descargar Código Python</a>
     </div>
     <div style="text-align:center;">
         <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
