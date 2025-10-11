@@ -50,28 +50,29 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;  /* 🔹 No permite que se rompa a otra línea */
-  gap: 20px;          /* 🔹 Espacio entre los elementos */
+  flex-wrap: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  gap: 20px;
 }
-
 .logo { width: 180px; height: auto; }
-.titulo{ text-align: center;
-  flex-grow: 1 ;
+.titulo {
+  text-align: center;
+  flex-grow: 1;
 }
-.titulo h1 { margin: 0; color: #f7f2fa; font-size: 300px; }
-.titulo h2 { margin: 0; color:#a584e4; font-size: 28px; font-weight: bold;}
-.titulo h3 { margin: 4px 0; font-size: 16px; color: #7c6583;
-}
+.titulo h1 { margin: 0; color: #f7f2fa; font-size: 32px; }
+.titulo h2 { margin: 0; color:#a584e4; font-size: 22px; font-weight: bold;}
+.titulo h3 { margin: 4px 0; font-size: 14px; color: #7c6583; }
 .titulo .linea-principal {
-    margin-top: 10px;
-    font-size: 30px;
-    color: #f7f2fa;
-    font-weight: 900;
-    letter-spacing: 2px;
+  margin-top: 10px;
+  font-size: 24px;
+  color: #f7f2fa;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
-.titulo .titulo-curso{
-  font-size: 38px;
-  color:#676567;
+.titulo .titulo-curso {
+  font-size: 28px;
+  color:#b399e6;
 }
 
 /* 👩‍🎓 SECCIONES */
@@ -79,24 +80,25 @@ header {
   background: linear-gradient(#000, #190118, #300441);
   border-radius: 20px;
   padding: 20px;
-  margin: 1px auto;
-  max-width: 1700px;
-  box-shadow: 1 1 6px rgba(0,0,0,0.4);
+  margin: 20px auto;
+  max-width: 1400px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
 }
-.caja h2 { color: #e5d5ff;
-  font-family: 'Poppins', 'Gill Sans', Calibri, sans-serif;
+.caja h2 {
+  color: #e5d5ff;
+  font-family: 'Poppins', Calibri, sans-serif;
   font-weight: bold;
   letter-spacing: 1px;
- }
+}
 .datos-flex {
   display: flex; justify-content: center;
   align-items: center; flex-wrap: wrap;
   gap: 50px; text-align: left;
-  font-family: 'Poppins', 'Gill Sans', Calibri, sans-serif;
+  font-family: 'Poppins', Calibri, sans-serif;
   font-size: 18px;
 }
 .foto {
-  width: 100px; border-radius: 50%; border: 2px solid #000;
+  width: 120px; border-radius: 50%; border: 2px solid #000;
 }
 
 /* 🔘 BOTONES */
@@ -108,24 +110,22 @@ header {
   color: #dbc6ed;
   text-decoration: none;
   border-radius: 10px;
-  font-weight: bold; text-align: left;
+  font-weight: bold; text-align: center;
   transition: 0.3s;
 }
 .boton:hover { background: #000000; }
 
 /* 📱 RESPONSIVE */
 @media (max-width: 768px) {
-  .header-contenido { padding: 0 5px; }
+  .header-contenido { flex-wrap: wrap; justify-content: center; }
   .logo { width: 90px; }
-  .titulo h1 { font-size: 18px; }
-  .titulo h2, .titulo .linea-principal{font-size: 20px; letter-spacing: 1px; font-weight: 700;} 
-  .titulo h3 { font-size: 10px; }
-  .titulo{
-    min-width: 0;
-  }
-  .boton { width: 90%; text-align: center; }
+  .titulo h1 { font-size: 20px; }
+  .titulo h2, .titulo .linea-principal { font-size: 18px; letter-spacing: 1px; }
+  .titulo h3 { font-size: 12px; }
+  .boton { width: 90%; }
 }
 </style>
+
 </head>
 
 <body>
@@ -204,4 +204,3 @@ header {
 
 </body>
 </html>
-
