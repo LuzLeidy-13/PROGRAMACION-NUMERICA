@@ -46,11 +46,12 @@ header {
   padding: 20px 40px;
   text-align: center;
 }
-
 .header-contenido {
-  display: grid; 
-  grid-template-columns: auto 1fr auto;
-  align-items: center; flex-wrap: wrap; padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;  /* 🔹 No permite que se rompa a otra línea */
+  gap: 20px;          /* 🔹 Espacio entre los elementos */
 }
 
 .logo { width: 180px; height: auto; }
@@ -112,7 +113,7 @@ header {
 }
 .boton:hover { background: #000000; }
 
-/* 📱 RESPONSIVE 
+/* 📱 RESPONSIVE */
 @media (max-width: 768px) {
   .header-contenido { padding: 0 5px; }
   .logo { width: 90px; }
@@ -123,7 +124,7 @@ header {
     min-width: 0;
   }
   .boton { width: 90%; text-align: center; }
-}*/
+}
 </style>
 </head>
 
