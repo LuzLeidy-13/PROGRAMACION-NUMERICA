@@ -46,6 +46,7 @@ header {
   padding: 20px 40px;
   text-align: center;
 }
+
 .header-contenido {
   display: flex; justify-content: space-between;
   align-items: center; flex-wrap: wrap;
@@ -54,9 +55,23 @@ header {
 }
 
 .logo { width: 180px; height: auto; }
-.titulo h1 { margin: 0; color: #f7f2fa; font-size: 40px; }
-.titulo h2 { margin: 0; color:#a584e4; font-size: 50px;}
-.titulo h3 { margin: 4px 0; font-size: 20px; color: #7c6583;
+.titulo{ text-align: center;
+  flex-grow: 1 ;
+}
+.titulo h1 { margin: 0; color: #f7f2fa; font-size: 300px; }
+.titulo h2 { margin: 0; color:#a584e4; font-size: 28px; font-weight: bold;}
+.titulo h3 { margin: 4px 0; font-size: 16px; color: #7c6583;
+}
+.titulo .linea-principal {
+    margin-top: 10px;
+    font-size: 30px;
+    color: #f7f2fa;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+.titulo .titulo-curso{
+  font-size: 45px;
+  color:#676567;
 }
 
 /* 👩‍🎓 SECCIONES */
@@ -100,10 +115,10 @@ header {
 
 /* 📱 RESPONSIVE */
 @media (max-width: 768px) {
-  .header-contenido { flex-direction: column; gap: 10px; }
+  .header-contenido { flex-direction: column; gap: 10px;padding: 10px; }
   .logo { width: 120px; }
-  .titulo h1 { font-size: 20px; }
-  .titulo h2, .titulo h3 { font-size: 14px; }
+  .titulo h1 { font-size: 22px; }
+  .titulo h2, .titulo .linea-principal{font-size: 18px;} .titulo h3 { font-size: 14px; }
   .boton { width: 90%; text-align: center; }
 }
 </style>
@@ -125,11 +140,16 @@ header {
   <div class="header-contenido">
     <img src="logo_unap.png" alt="Logo UNAP" class="logo">
     <div class="titulo">
-      <h1>Universidad Nacional del Altiplano - Puno</h1>
+      <div class="linea-principal">
+        Universidad Nacional del Altiplano-Puno
+      </div>
       <h3>Facultad de Ingeniería Estadística e Informática</h3>
       <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
-      <h1>Bienvenido a mi portafolio</h1>
-      <h2>Programación Numérica</h2>
+      <div class="linea-principal">
+        Bienvenido a mi Portafolio
+      </div>
+      <div class="linea-principal titulo-curso">PROGRAMACION NUMERICA
+      </div> 
     </div>
     <img src="logo_finesi.png" alt="Logo Finesi" class="logo">
   </div>
@@ -137,7 +157,7 @@ header {
 
 <!-- 👩‍🎓 SOBRE MÍ -->
 <section class="caja">
-  <h2>Sobre mí -------------------------------------------------------------------------------------------------------------------------------------------------------------------</h2>
+  <h2>Sobre mí </h2>
   <div class="datos-flex">
     <img src="perfil_estudiante.jpg" alt="Foto estudiante" class="foto">
     <div>
