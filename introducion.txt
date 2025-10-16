@@ -1,0 +1,3 @@
+La comprensión inicial se obtiene por medios empíricos, es decir, mediante observación y experimentación. Sin embargo, aunque esta información derivada empíricamente es esencial, es solo la mitad de la historia.
+
+A través de años y años de observación y experimentación, los ingenieros y científicos han notado que ciertos aspectos de sus estudios empíricos ocurren repetidamente. Este comportamiento general puede entonces expresarse como leyes fundamentales que esencialmente incorporan la sabiduría acumulada de la experiencia pasada. La mayoría de la resolución de problemas de ingeniería emplea un enfoque de dos vértices

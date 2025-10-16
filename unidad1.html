@@ -170,12 +170,26 @@ iframe {
 
 <!-- BOTONES PRINCIPALES -->
 <section class="unidades" id="menuPrincipal">
+    <button class="boton" onclick="mostrarTrabajo('t0', 'Introduccion - A la programacion numerica')">Introduccion - A la programacion numerica</button>
     <button class="boton" onclick="mostrarTrabajo('t1', 'TRABAJO 1 - Reconocer funciones')">TRABAJO 1 - Reconocer funciones</button>
     <button class="boton" onclick="mostrarTrabajo('t2', 'TRABAJO 2 - Graficar funciones lineales ')">TRABAJO 2 - Graficar funciones Lineales</button>
     <button class="boton" onclick="mostrarTrabajo('t3', 'TRABAJO 3 - Rstricciones y Sistemas de Ecuaciones')">TRABAJO 3 - Restricciones y Sistemas de Ecuaciones</button>
     <button class="boton" onclick="mostrarTrabajo('t4', 'TRABAJO 4 - Metodo Numericos (Biseccion)')">TRABAJO 4 - Método Numericos (Biseccion)</button>
     <button class="boton" onclick="mostrarTrabajo('t5', 'TRABAJO 5 - Metodo de Newton Raphson')">TRABAJO 5 - Metodo Newton Raphon</button>
 </section>
+
+<!-- TRABAJO 0 -->
+<div id="t0" class="contenido">
+    <iframe id="codigoFrame" src="introducion.txt"></iframe>
+    <div class="descargas">
+        <a href="IntroduccionaProgramaccionNumerica.pdf" target="_blank"> 📄 Ver PDF</a>
+        <a href="Intro.pdf" target="_blank"> 📄 Ver PDF</a>
+    </div>
+    <div style="text-align:center;">
+        <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+    </div>
+</div>
+
 
 <!-- TRABAJO 1 -->
 <div id="t1" class="contenido">
@@ -267,6 +281,19 @@ aplicados a problemas reales.
         <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
     </div>
 </div>
+
+<!-- TRABAJO 1 -->
+<div id="t6" class="contenido">
+    <iframe id="codigoFrame" src="reconocimiento de funciones.txt"></iframe>
+    <div class="descargas">
+        <a href="unidad1.pdf.pdf" target="_blank"> 📄 Ver PDF</a>
+        <a href="reconocimiento de funciones.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <div style="text-align:center;">
+        <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+    </div>
+</div>
+
 
 <!-- BOTÓN DE REGRESAR -->
 <div class="unidades">
