@@ -19,61 +19,122 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 🔝 MENÚ FIJO */
-.nav-simple {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(17, 1, 26, 0.97);
-  border-bottom: 2px solid #676567;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+/* 🔝 MENÚ FIJO (UNO SOLO CON EL HEADER) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(#000, #190118, #300441);
+  border-bottom: 3px solid #757476;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: all 0.4s ease;
 }
-.nav-simple ul {
-  margin: 0; padding: 10px 20px;
-  display: flex; justify-content: flex-end; gap: 25px;
+
+/* 💨 EFECTO AL HACER SCROLL */
+header.scroll-pequeno {
+  background: rgba(20, 0, 35, 0.95);
+  padding: 10px 20px;
+  border-bottom: 2px solid #555;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+  transform: scale(0.98);
+}
+
+/* 🌐 MENÚ SUPERIOR DENTRO DEL HEADER */
+.nav-simple {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
   list-style: none;
+  padding: 10px 20px;
+  margin: 0;
 }
 .nav-simple a {
-  color: #fff; text-decoration: none;
-  font-weight: bold; padding: 8px 14px;
-  border-radius: 8px; transition: 0.3s;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
 }
-.nav-simple a:hover { background: #2d0531; }
+.nav-simple a:hover {
+  background: #2d0531;
+}
 
-/* 🏫 ENCABEZADO */
-header {
-  border-bottom: 3px solid #757476;
-  background: linear-gradient(#000, #190118, #300441);
-  padding: 20px 40px;
-  text-align: center;
-}
+/* 🧭 CONTENIDO DEL ENCABEZADO */
 .header-contenido {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
   flex-wrap: nowrap;
   overflow: hidden;
   white-space: nowrap;
-  gap: 20px;
+  padding: 15px 10px;
+  transition: all 0.4s ease;
 }
-.logo { width: 180px; height: auto; }
+
+header.scroll-pequeno .header-contenido {
+  gap: 10px;
+  padding: 5px 0;
+}
+
+/* 🖼️ LOGOS */
+.logo {
+  width: 180px;
+  height: auto;
+  flex: 0 0 auto;
+  transition: width 0.4s ease;
+}
+header.scroll-pequeno .logo {
+  width: 120px;
+}
+
+/* 🧩 TÍTULOS */
 .titulo {
+  flex: 1 1 auto;
   text-align: center;
-  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
 }
-.titulo h1 { margin: 0; color: #f7f2fa; font-size: 32px; }
-.titulo h2 { margin: 0; color:#a584e4; font-size: 22px; font-weight: bold;}
-.titulo h3 { margin: 4px 0; font-size: 14px; color: #7c6583; }
-.titulo .linea-principal {
-  margin-top: 10px;
-  font-size: 24px;
-  color: #f7f2fa;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
+.titulo h1,
+.titulo h2,
+.titulo h3,
+.titulo .linea-principal,
 .titulo .titulo-curso {
-  font-size: 28px;
-  color:#b399e6;
+  margin: 2px 0;
+  transition: font-size 0.4s ease;
+  line-height: 1.2;
 }
+
+/* 🎓 Tamaños personalizados de los títulos del encabezado */
+.titulo .linea-principal {
+  font-size: 26px;   /* “Universidad Nacional del Altiplano-Puno” */
+  font-weight: bold; 
+  color: #dbc6ed;
+}
+
+.titulo h3 {
+  font-size: 18px;   /* “Facultad” y “Escuela Profesional” */
+  font-weight: normal;
+  color: #b0aeb0;
+}
+
+.titulo .titulo-curso {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #8f738f, #6f667a, #ffb3f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* ✨ degradado brillante para “PROGRAMACIÓN NUMÉRICA” */
+  text-shadow: 0 0 8px rgba(255, 180, 255, 0.4);
+}
+
+
+header.scroll-pequeno .titulo h1 { font-size: 22px; }
+header.scroll-pequeno .titulo h2,
+header.scroll-pequeno .titulo .linea-principal { font-size: 16px; }
+header.scroll-pequeno .titulo h3 { font-size: 12px; }
+header.scroll-pequeno .titulo .titulo-curso { font-size: 18px; }
 
 /* 👩‍🎓 SECCIONES */
 .caja {
@@ -85,7 +146,7 @@ header {
   box-shadow: 0 0 6px rgba(0,0,0,0.4);
 }
 .caja h2 {
-  color: #e5d5ff;
+  color: #ffffff;
   font-family: 'Poppins', Calibri, sans-serif;
   font-weight: bold;
   letter-spacing: 1px;
@@ -115,46 +176,52 @@ header {
 }
 .boton:hover { background: #000000; }
 
-/* 📱 RESPONSIVE */
+/* 📱 CELULARES */
 @media (max-width: 768px) {
-  .header-contenido { flex-wrap: row; justify-content: space-between;align-items: center;gap: 10px; }
+  .header-contenido { gap: 8px; }
   .logo { width: 70px; }
-  .titulo {text-align: center;}
-  .titulo h1 { font-size: 16px; }
-  .titulo h2, .titulo .linea-principal { font-size: 15px; letter-spacing: 1px; }
+  .titulo h1 { font-size: 18px; }
+  .titulo h2,
+  .titulo .linea-principal { font-size: 15px; }
   .titulo h3 { font-size: 12px; }
-  .boton { width: 90%; }
+  .titulo .titulo-curso { font-size: 17px; }
+  header.scroll-pequeno .logo { width: 55px; }
+}
+
+/* 📱 MUY PEQUEÑAS */
+@media (max-width: 480px) {
+  .header-contenido { gap: 5px; }
+  .logo { width: 55px; }
+  .titulo h1 { font-size: 14px; }
+  .titulo h2,
+  .titulo .linea-principal { font-size: 12px; }
+  .titulo h3 { font-size: 10px; }
+  .titulo .titulo-curso { font-size: 13px; }
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- 🌐 MENÚ -->
-<nav class="nav-simple">
-  <ul>
+<!-- 🏫 ENCABEZADO + MENÚ -->
+<header id="header">
+  <ul class="nav-simple">
     <li><a href="index.html">FINESI</a></li>
     <li><a href="unidad1.html">UNIDAD I</a></li>
     <li><a href="unidad2.html">UNIDAD II</a></li>
   </ul>
-</nav>
-
-<!-- 🏫 ENCABEZADO -->
-<header>
   <div class="header-contenido">
     <img src="logo_unap.png" alt="Logo UNAP" class="logo">
     <div class="titulo">
       <div class="linea-principal">
-        Universidad Nacional del Altiplano-Puno
+        Universidad Nacional del Altiplano - Puno
       </div>
       <h3>Facultad de Ingeniería Estadística e Informática</h3>
       <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
       <div class="linea-principal">
         Bienvenido a mi Portafolio
       </div>
-      <div class="linea-principal titulo-curso">PROGRAMACION NUMERICA
-      </div> 
+      <div class="linea-principal titulo-curso">PROGRAMACIÓN NUMÉRICA</div> 
     </div>
     <img src="logo_finesi.png" alt="Logo Finesi" class="logo">
   </div>
@@ -162,7 +229,7 @@ header {
 
 <!-- 👩‍🎓 SOBRE MÍ -->
 <section class="caja">
-  <h2>Sobre mí </h2>
+  <h2>Sobre mí</h2>
   <div class="datos-flex">
     <img src="perfil_estudiante.jpg" alt="Foto estudiante" class="foto">
     <div>
@@ -182,18 +249,18 @@ header {
 <section class="caja">
   <h2>Introducción al curso</h2>
   <p>
-  El conocimiento y la comprension son requisitos previos para la implementacion efectiva de cualquier herramienta. 
-  Sin importar cuan impresionante sea nuestro arsenal de herramientas, sera practicamente imposible reparar un automovil
-   si no entendemos como funciona. Esto es particularmente cierto cuando utilizamos computadoras para resolver problemas 
-   de ingenieria. Aunque tienen gran utilidad potencial, las computadoras son practicamente inutiles sin una comprension fundamental 
-   de como funcionan los sistemas de ingenieria.
+    El conocimiento y la comprensión son requisitos previos para la implementación efectiva de cualquier herramienta. 
+    Sin importar cuán impresionante sea nuestro arsenal de herramientas, será prácticamente imposible reparar un automóvil
+    si no entendemos cómo funciona. Esto es particularmente cierto cuando utilizamos computadoras para resolver problemas 
+    de ingeniería. Aunque tienen gran utilidad potencial, las computadoras son prácticamente inútiles sin una comprensión fundamental 
+    de cómo funcionan los sistemas de ingeniería.
   </p>
   <p>
-    La comprension inicial se obtiene por medios empiricos, es decir, mediante observacion y experimentacion. Sin embargo, aunque 
-    esta informacion derivada empiricamente es esencial, es solo la mitad de la historia. A traves de anos y años de observacion y
-     experimentacion, los ingenieros y cientificos han notado que ciertos aspectos de sus estudios empiricos ocurren repetidamente.
-      Este comportamiento general puede entonces expresarse como leyes fundamentales que esencialmente incorporan la sabiduria
-       acumulada de la experiencia pasada.
+    La comprensión inicial se obtiene por medios empíricos, es decir, mediante observación y experimentación. Sin embargo, aunque 
+    esta información derivada empíricamente es esencial, es solo la mitad de la historia. A través de años de observación y
+    experimentación, los ingenieros y científicos han notado que ciertos aspectos de sus estudios empíricos ocurren repetidamente.
+    Este comportamiento general puede entonces expresarse como leyes fundamentales que esencialmente incorporan la sabiduría
+    acumulada de la experiencia pasada.
   </p>
 </section>
 
@@ -202,6 +269,21 @@ header {
   <a href="unidad1.html" class="boton">Unidad I</a>
   <a href="unidad2.html" class="boton">Unidad II</a>
 </section>
+
+<!-- ⚙️ EFECTO DE SCROLL -->
+<script>
+let ultimoScroll = 0;
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  const actual = window.scrollY;
+  if (actual > 80 && actual > ultimoScroll) {
+    header.classList.add('scroll-pequeno');
+  } else if (actual < 50) {
+    header.classList.remove('scroll-pequeno');
+  }
+  ultimoScroll = actual;
+});
+</script>
 
 </body>
 </html>
