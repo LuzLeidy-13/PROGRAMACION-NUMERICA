@@ -1,0 +1,76 @@
+import math
+import re
+
+def preparar_funcion(expr):
+    expr = expr.lower().replace("^", "**")
+
+    expr = re.sub(r"e\^\(?([^)]+)\)?", r"math.exp(\1)", expr)
+    
+    expr = re.sub(r'(\d)(x)', r'\1*\2', expr)
+    expr = re.sub(r'(x)(\d)', r'\1*\2', expr)
+    expr = re.sub(r'(\))(\()', r'\1*\2', expr)
+    expr = re.sub(r'(\d)(\()', r'\1*\2', expr)
+    expr = re.sub(r'(\))(\d)', r'\1*\2', expr)
+
+    # Reemplaza funciones conocidas para que evalue las reconozca
+    expr = expr.replace("exp", "math.exp")
+    expr = expr.replace("sin", "math.sin")
+    expr = expr.replace("cos", "math.cos")
+    expr = expr.replace("tan", "math.tan")
+    expr = expr.replace("log", "math.log")
+    expr = expr.replace("pi", "math.pi")
+    expr = expr.replace("e", "math.e")
+
+    return expr
+
+
+def biseccion_tabla():
+    funcion_str = input("Ingresa la función f(x) ejemplo: e^3x-4: ")
+    a = float(input("Ingresa el límite inferior a: "))
+    b = float(input("Ingresa el límite superior b: "))
+    tol = float(input("Ingresa la tolerancia(Error) Ejemplo(0.01): "))
+
+    funcion_str = preparar_funcion(funcion_str)
+
+    def f(x):
+        return eval(funcion_str, {"x": x, "math": math})
+
+    fa, fb = f(a), f(b)
+    if fa * fb > 0:
+        print("\n Error: f(a) y f(b) tienen el mismo signo. No se puede aplicar bisección.")
+        return
+
+    print(f"\n{'Iter':<5}{'a':>10}{'b':>10}{'m':>12}{'f(a)':>12}{'f(b)':>12}{'f(m)':>12}{'Error':>12}")
+    print("-"*85)
+
+    error = float("inf")
+    iteracion = 0
+    m_anterior = 0
+
+    while error > tol:
+        iteracion += 1
+        m = (a + b) / 2
+        fa, fb, fm = f(a), f(b), f(m)
+
+        if iteracion > 1:
+            error = abs(m - m_anterior)
+        m_anterior = m
+
+        print(f"{iteracion:<5}{a:>10.6f}{b:>10.6f}{m:>12.6f}{fa:>12.6f}{fb:>12.6f}{fm:>12.6f}{error:>12.6f}")
+
+        if fa * fm < 0:
+            b = m
+        else:
+            a = m
+
+        if error < tol:
+            break
+
+    print(f"Raíz aproximada: {m:.6f}")
+    print(f"f(raíz): {f(m):.6e}")
+    print(f"Iteraciones: {iteracion}")
+    print(f"Error estimado: {error:.6e}")
+
+
+biseccion_tabla()
+
