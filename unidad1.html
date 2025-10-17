@@ -3,23 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1024">
-<title>Unidad 1 - Programacion Numerica</title>
+<title>Unidad 1 - Programación Numérica</title>
 <style>
 /* GENERAL */
 body {
-     font-family: 'Gill Sans MT', Calibri, sans-serif;
+  font-family: 'Gill Sans MT', Calibri, sans-serif;
   margin: 0;
   background: linear-gradient(to right, #0c010f, #2e074c, #0c010f);
-  color: #b0aeb0;
+  color: #ffffff;
   animation: fadeIn 1.5s ease-in;
-   
 }
 
 /* 🔝 MENÚ FIJO */
 .nav-simple {
   position: sticky; top: 0; z-index: 1000;
   background: rgba(17, 1, 26, 0.97);
-  border-bottom: 2px solid #676567;
+  border-bottom: 2px solid #9e9b9e;
   backdrop-filter: blur(6px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
@@ -29,116 +28,197 @@ body {
   list-style: none;
 }
 .nav-simple a {
-  color: #fff; text-decoration: none;
+  color: #8c898f; text-decoration: none;
   font-weight: bold; padding: 8px 14px;
   border-radius: 8px; transition: 0.3s;
 }
-.nav-simple a:hover { background: #2d0531; }
+.nav-simple a:hover { background: #2d0531; transform: scale(1.05); }
 
 /* 🏫 ENCABEZADO */
 header {
-  border-bottom: 3px solid #757476;
-  background: linear-gradient(#000, #190118, #280441);
+  border-bottom: 3px solid #888888;
+  background: linear-gradient(#000, #190118, #300441);
   padding: 20px 40px;
   text-align: center;
 }
+
+/* ✅ ENCABEZADO TODO EN UNA SOLA LÍNEA */
 .header-contenido {
-  display: flex; justify-content: space-between;
-  align-items: center; flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* centra todo el bloque */
+  gap: 20px;
+  flex-wrap: nowrap;         /* ❗ evita que los logos bajen */
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 5px;
 }
 
-.logo { width: 180px; height: auto; }
-.titulo h1 { margin: 0; color: #f7f2fa; font-size: 40px; }
-.titulo h2 { margin: 0; color:#62537f; font-size: 35px;}
-.titulo h3 { margin: 4px 0; font-size: 20px; color: #7c6583;
+/* 🎓 LOGOS Y TÍTULOS */
+/* 🎓 LOGOS */
+.logo {
+  width: 180px;
+  height: auto;
+  flex: 0 0 auto;            /* no se estiran ni encogen */
+  transition: width 0.3s ease;
 }
-/* BOTONES PRINCIPALES */
+
+/* 🧩 TÍTULO CENTRAL */
+.titulo {
+  flex: 1 1 auto;            /* se expande entre los dos logos */
+  text-align: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ✨ TEXTOS DEL TÍTULO */
+.titulo h1 {
+  margin: 0;
+  font-size: 36px;
+  background: linear-gradient(to right, #795c99, #c088dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorShift 6s infinite alternate;
+}
+
+.titulo h2 {
+  margin: 0;
+  font-size: 30px;
+  color: #d3c1ff;
+}
+
+.titulo h3 {
+  margin: 4px 0;
+  font-size: 18px;
+  color: #b9a6d9;
+}
+
+/* 🎨 BOTONES PRINCIPALES */
 .unidades {
-    text-align: center;
-    margin: 20px 0;
+  text-align: center;
+  margin: 20px 0;
 }
 .boton {
-    display: block;              /* cada botón ocupa toda la línea */
-    width: 90%;                  /* mismo ancho para todos */
-    max-width: 1200px;            /* límite opcional */
-    margin: 10px auto;           /* centra horizontalmente */
-    padding: 20px 0;             /* mismo padding arriba y abajo */
-    background: linear-gradient(#2e074c,#190118);
-    color: rgb(219, 182, 237);
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    text-align: center;          /* centra el texto */
-    transition: 0.3s;
-    cursor: pointer;
+  display: block;
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 20px 0;
+  background: linear-gradient(135deg, #300441, #190118);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 .boton:hover {
-    background: #1c072b;
+  background: linear-gradient(135deg, #4b0b6b, #220124);
+  transform: scale(1.03);
 }
 
-/* CONTENIDO DE TRABAJO */
+/* 📄 CONTENIDO DE TRABAJO */
 .caja {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 .contenido {
-    margin: 10px auto;
-    width: 100%;
-    max-width: 900px;
-    background: #1c072b;
-    border-radius: 15px;
-    padding: 20px;
-    display: none;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 900px;
+  background: #1c072b;
+  border-radius: 15px;
+  padding: 20px;
+  display: none;
+  animation: fadeIn 0.8s ease-in;
 }
 iframe {
-    width: 100%;
-    height: 500px;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-#codigoFrame {
-    height: 300px;
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #fff;
 }
 
-/* BOTONES DE DESCARGA Y CIERRE */
+/* 🔘 DESCARGAS Y CIERRE */
 .descargas {
-    text-align: center;
+  text-align: center;
 }
 .descargas a, .cerrar {
-    background-color: #5f1589;
-    color: white;
-    padding: 10px 20px;
-    margin: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    display: inline-block;
+  background-color: #733f92;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  display: inline-block;
+  transition: 0.3s;
 }
 .descargas a:hover, .cerrar:hover {
-    background-color: #6d2f90;
+  background-color: #08010c;
+  transform: scale(1.05);
 }
 
-/* TÍTULO FIJO DEL TRABAJO */
+/* 🧾 TÍTULO DEL TRABAJO */
 #tituloTrabajo {
-    text-align: center;
-    font-size: 28px;
-    color: #f0e0ff;
-    background-color: #4b1872c4;
-    padding: 15px;
-    margin: 0;
-    display: none;
-    font-weight: bold;
-    border-top: 2px solid #676668;
-    border-bottom: 2px solid #777678;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff;
+  background-color: #17021e89;
+  padding: 15px;
+  margin: 0;
+  display: none;
+  font-weight: bold;
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  animation: fadeInDown 0.8s ease;
 }
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+  .header-contenido {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .logo { width: 120px; margin: 10px auto; }
+  .titulo h1 { font-size: 26px; }
+  .titulo h2 { font-size: 20px; }
+  .titulo h3 { font-size: 14px; }
+}
+
+/* 🌈 ANIMACIÓN SUAVE DE COLOR */
+@keyframes colorShift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(180deg); }
+}
+
+/* 📱 ADAPTACIÓN A CELULARES */
+@media (max-width: 768px) {
+  .header-contenido { gap: 10px; }
+  .logo { width: 90px; }
+  .titulo h1 { font-size: 22px; }
+  .titulo h2 { font-size: 18px; }
+  .titulo h3 { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .logo { width: 70px; }
+  .titulo h1 { font-size: 16px; }
+  .titulo h2 { font-size: 14px; }
+  .titulo h3 { font-size: 11px; }
+}
+
+
 </style>
 </head>
 
 <body>
 
-    <!-- 🌐 MENÚ -->
+<!-- 🌐 MENÚ -->
 <nav class="nav-simple">
   <ul>
     <li><a href="index.html">FINESI</a></li>
@@ -147,40 +227,50 @@ iframe {
   </ul>
 </nav>
 
-
+<!-- 🏛️ ENCABEZADO -->
 <header>
-    <div class="header-contenido">
-        <img src="logo_unap.png" alt="Logo Universidad" class="logo">
-        <div class="titulo">
-            <h1>Universidad Nacional del Altiplano</h1>
-            <h3>Facultad de Ingeniería Estadística e Informática</h3>
-            <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
-            <h2>PROGRAMACIÓN NUMÉRICA - Unidad 1</h2>
-        </div>
-        <img src="logo_finesi.png" alt="Logo Facultad" class="logo">
+  <div class="header-contenido">
+    <img src="logo_unap.png" alt="Logo Universidad" class="logo">
+    <div class="titulo">
+      <h1>Universidad Nacional del Altiplano</h1>
+      <h3>Facultad de Ingeniería Estadística e Informática</h3>
+      <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
+      <h2>  UNIDAD I</h2>
+      <h4>TRABAJOS ENCARGADOS DURANTE LA UNIDAD I</h4>
+
     </div>
+    <img src="logo_finesi.png" alt="Logo Facultad" class="logo">
+  </div>
 </header>
 
-<!-- NUEVO: TÍTULO DEL TRABAJO SELECCIONADO -->
 <h2 id="tituloTrabajo"></h2>
 
-<section class="caja">
-    <h3>TRABAJOS ENCARGADOS DURANTE LA UNIDAD I</h3>
-</section>
-
-<!-- BOTONES PRINCIPALES -->
+<!-- 🔘 BOTONES PRINCIPALES -->
 <section class="unidades" id="menuPrincipal">
-    <button class="boton" onclick="mostrarTrabajo('t0', 'Introduccion - A la programacion numerica')">Introduccion - A la programacion numerica</button>
-    <button class="boton" onclick="mostrarTrabajo('t1', 'TRABAJO 1 - Reconocer funciones')">TRABAJO 1 - Reconocer funciones</button>
-    <button class="boton" onclick="mostrarTrabajo('t2', 'TRABAJO 2 - Graficar funciones lineales ')">TRABAJO 2 - Graficar funciones Lineales</button>
-    <button class="boton" onclick="mostrarTrabajo('t3', 'TRABAJO 3 - Rstricciones y Sistemas de Ecuaciones')">TRABAJO 3 - Restricciones y Sistemas de Ecuaciones</button>
-    <button class="boton" onclick="mostrarTrabajo('t4', 'TRABAJO 4 - Metodo Numericos (Biseccion)')">TRABAJO 4 - Método Numericos (Biseccion)</button>
-    <button class="boton" onclick="mostrarTrabajo('t5', 'TRABAJO 5 - Metodo de Newton Raphson')">TRABAJO 5 - Metodo Newton Raphon</button>
+  <button class="boton" onclick="mostrarTrabajo('t0','Introducción a la Programación Numérica')">Introducción - A la programación numérica</button>
+  <button class="boton" onclick="mostrarTrabajo('t1','Trabajo 1 - Reconocer funciones')">TRABAJO 1 - Reconocer funciones</button>
+  <button class="boton" onclick="mostrarTrabajo('t2','Trabajo 2 - Graficar funciones lineales')">TRABAJO 2 - Graficar funciones Lineales</button>
+  <button class="boton" onclick="mostrarTrabajo('t3','Trabajo 3 - Restricciones y Sistemas de Ecuaciones')">TRABAJO 3 - Restricciones y Sistemas de Ecuaciones</button>
+  <button class="boton" onclick="mostrarTrabajo('t4','Trabajo 4 - Método Numérico (Bisección)')">TRABAJO 4 - Método Numérico (Bisección)</button>
+  <button class="boton" onclick="mostrarTrabajo('t5','Trabajo 5 - Método de Newton Raphson')">TRABAJO 5 - Método Newton Raphson</button>
 </section>
 
-<!-- TRABAJO 0 -->
+<!-- ✅ TODOS LOS TRABAJOS -->
+<!-- (se mantienen igual que en tu versión anterior, sin eliminar nada) -->
+<!-- ... aquí van tus div id="t0" a id="t5" exactamente como los tienes ... -->
+ <!-- TRABAJO 0 -->
 <div id="t0" class="contenido">
-    <iframe id="codigoFrame" src="introducion.txt"></iframe>
+    <h3 style="text-align:left;">
+        La comprensión inicial se obtiene por medios empíricos, es decir, mediante observación y experimentación. Sin embargo, aunque 
+        esta información derivada empíricamente es esencial, es solo la mitad de la historia.
+    </h3> 
+     <h3 style="text-align:left;">
+ 
+A través de años y años de observación y experimentación, los ingenieros y científicos han
+ notado que ciertos aspectos de sus estudios empíricos ocurren repetidamente. Este comportamiento 
+ general puede entonces expresarse como leyes fundamentales que esencialmente incorporan la sabiduría acumulada de
+  la experiencia pasada. La mayoría de la resolución de problemas de ingeniería emplea un enfoque de dos vértices
+    </h3> 
     <div class="descargas">
         <a href="IntroduccionaProgramaccionNumerica.pdf" target="_blank"> 📄 Ver PDF</a>
         <a href="Intro.pdf" target="_blank"> 📄 Ver PDF</a>
@@ -218,20 +308,20 @@ iframe {
 <!-- TRABAJO 3 -->
 <div id="t3" class="contenido">
     <h3 style="text-align:center;">Ejercicios Propuesto</h3>
-    <p style="text-align:center; color:rgb(219,182,237); font-size:18px; max-width:800px; margin:auto;">
-    <h5 style="text-align:left;">1-Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de front-end (x) y back-end (y). Además:
+    <p style="text-align:center; color:rgb(247, 247, 248); font-size:18px; max-width:800px; margin:auto;">
+    <h4 style="text-align:left;">1-Un desarrollador tiene 15 horas semanales para dedicar al desarrollo de software de front-end (x) y back-end (y). Además:
 • Debe dedicar al menos 5 horas al desarrollo de front-end para cumplir con los entregables del cliente.
 • El tiempo total no puede exceder 15 horas por restricciones de tiempo del sprint.
-Formule las restricciones, represéntelas gráficamente e identifique las combinaciones posibles de tiempo a invertir en cada actividad.</h5>  
-     <h5 style="text-align:left;">2-Un ingeniero de datos administra dos tipos de servidores en la nube: Servidores A y Servidores B. El costo por hora de Servidor A es S/3 y de Servidor B es S/5. El presupuesto máximo semanal asignado para mantener los servidores es de S/20.
-Determine cuántas horas puede mantener activos cada tipo de servidor, formule el sistema de ecuaciones y represéntelo gráficamente.</h5> 
-<h5 style="text-align:left;">3-Un administrador de proyectos tecnológicos organiza su tiempo entre reuniones con stakeholders (x) y trabajo en la documentación técnica (y). Las reuniones requieren al menos 4 horas semanales y la documentación al menos 6 horas. Si dispone de 12 horas para ambas actividades,
-determine la región factible y analice las combinaciones posibles de tiempo.</h5> 
-<h5 style="text-align:left;">4-Una empresa de desarrollo de videojuegos produce dos tipos de assets: Modelos 3D (P₁) y Texturas (P₂). Cada modelo 3D requiere 2 horas de trabajo y cada textura requiere 3 horas. El equipo de arte tiene un total de 18 horas disponibles semanalmente.
+Formule las restricciones, represéntelas gráficamente e identifique las combinaciones posibles de tiempo a invertir en cada actividad.</h4>  
+     <h4 style="text-align:left;">2-Un ingeniero de datos administra dos tipos de servidores en la nube: Servidores A y Servidores B. El costo por hora de Servidor A es S/3 y de Servidor B es S/5. El presupuesto máximo semanal asignado para mantener los servidores es de S/20.
+Determine cuántas horas puede mantener activos cada tipo de servidor, formule el sistema de ecuaciones y represéntelo gráficamente.</h4> 
+<h4 style="text-align:left;">3-Un administrador de proyectos tecnológicos organiza su tiempo entre reuniones con stakeholders (x) y trabajo en la documentación técnica (y). Las reuniones requieren al menos 4 horas semanales y la documentación al menos 6 horas. Si dispone de 12 horas para ambas actividades,
+determine la región factible y analice las combinaciones posibles de tiempo.</h4> 
+<h4 style="text-align:left;">4-Una empresa de desarrollo de videojuegos produce dos tipos de assets: Modelos 3D (P₁) y Texturas (P₂). Cada modelo 3D requiere 2 horas de trabajo y cada textura requiere 3 horas. El equipo de arte tiene un total de 18 horas disponibles semanalmente.
 Formule las restricciones, represéntelas gráficamente y determine cuántos assets de cada tipo pueden producirse en función del tiempo disponible.
-</h5> 
-<h5 style="text-align:left;">5-Una startup de hardware dispone de un máximo de 50 unidades de componentes electrónicos. Para ensamblar un dispositivo tipo A se necesitan 5 unidades y para un dispositivo tipo B se necesitan 10 unidades.
-Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 unidades de componentes. Formule el problema, resuélvalo gráficamente y explique las posibles combinaciones de producción.</h5> 
+</h4> 
+<h4 style="text-align:left;">5-Una startup de hardware dispone de un máximo de 50 unidades de componentes electrónicos. Para ensamblar un dispositivo tipo A se necesitan 5 unidades y para un dispositivo tipo B se necesitan 10 unidades.
+Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 unidades de componentes. Formule el problema, resuélvalo gráficamente y explique las posibles combinaciones de producción.</h4> 
      
     <iframe id="codigoFrame" src="restricciones-tarea3.txt"></iframe>
 
@@ -249,7 +339,7 @@ Determine cuántos dispositivos de cada tipo puede ensamblar sin exceder las 50 
 <!-- TRABAJO 4 -->
 <div id="t4" class="contenido">
     <h1 style="text-align:center;"> Metodos Numericos para Encontrar Raices</h1>
-    <p style="text-align:left; color:rgb(219,182,237); font-size:18px;">
+    <p style="text-align:left; color:rgb(243, 241, 245); font-size:18px;">
        Los metodos numericos para la resolucion de ecuaciones no lineales constituyen un
 pilar fundamental dentro de la programacion numerica y el analisis computacional. Su
 objetivo principal es aproximar las raices de funciones de la forma f(x) = 0, problema
@@ -295,35 +385,23 @@ aplicados a problemas reales.
 </div>
 
 
-<!-- BOTÓN DE REGRESAR -->
-<div class="unidades">
-    <a href="index.html" class="boton">⬅ Regresar al Portafolio</a>
-</div>
-
 <script>
 function mostrarTrabajo(id, nombre) {
-    document.getElementById("menuPrincipal").style.display = "none";
-    document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
-    
-    // Mostrar el título del trabajo arriba
-    const titulo = document.getElementById("tituloTrabajo");
-    titulo.textContent = nombre;
-    titulo.style.display = 'block';
-
-    window.scrollTo({ top: 250, behavior: 'smooth' });
+  document.getElementById("menuPrincipal").style.display = "none";
+  document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+  const titulo = document.getElementById("tituloTrabajo");
+  titulo.textContent = nombre;
+  titulo.style.display = 'block';
+  window.scrollTo({ top: 250, behavior: 'smooth' });
 }
-
 function cerrarTrabajo() {
-    document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
-    document.getElementById("menuPrincipal").style.display = 'block';
-    
-    // Ocultar el título del trabajo
-    const titulo = document.getElementById("tituloTrabajo");
-    titulo.style.display = 'none';
-    titulo.textContent = "";
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
+  document.getElementById("menuPrincipal").style.display = 'block';
+  const titulo = document.getElementById("tituloTrabajo");
+  titulo.style.display = 'none';
+  titulo.textContent = "";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 
