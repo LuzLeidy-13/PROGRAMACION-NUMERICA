@@ -1,0 +1,58 @@
+# GRADIENTE 
+n <- 0.01          # Tasa de aprendizaje
+x0 <- 3            # Valor inicial
+iter <- 21         # Número de iteraciones
+
+# DEFINICIÓN DE FUNCIONES
+f <- function(x) x^2             # Función objetivo
+f_deriv <- function(x) 2 * x     # Derivada
+
+# INICIALIZACIÓN DE VECTORES
+x <- numeric(iter)
+fx <- numeric(iter)
+fpx <- numeric(iter)
+grad <- numeric(iter)
+
+x[1] <- x0
+
+# CÁLCULO ITERATIVO
+for (i in 1:iter) {
+  fx[i] <- f(x[i])                # f(x)
+  fpx[i] <- f_deriv(x[i])         # f'(x)
+  grad[i] <- x[i] - n * fpx[i]  # x actualizado
+  if (i < iter) {
+    x[i + 1] <- grad[i]
+  }
+}
+
+# TABLA DE RESULTADOS
+tabla <- data.frame(
+  Iteración = 1:iter,
+  xo = x,
+  fx = fx,
+  fpx = fpx,
+  grad = grad
+)
+print(tabla)
+
+library(ggplot2)
+library(tidyr)
+
+# DATOS PARA GRÁFICO
+datos_long <- tabla |>
+  pivot_longer(cols = c(fx, fpx, grad),
+               names_to = "Variable",
+               values_to = "Valor")
+
+# GRÁFICO
+ggplot(datos_long, aes(x = xo, y = Valor, color = Variable)) +
+  geom_point(size = 2) +
+  geom_line(linewidth = 1) +
+  scale_color_manual(values = c("black", "blue", "purple"),
+                     labels = c("f(x)", "f'(x)", "Gradiente (x actualizado)")) +
+  labs(title = "Comparación de f(x), f'(x) y gradiente (x actualizado)",
+       x = "x",
+       y = "Valor",
+       color = "Variable") +
+  theme_minimal(base_size = 14) +
+  theme(plot.title = element_text(hjust = 0.5))

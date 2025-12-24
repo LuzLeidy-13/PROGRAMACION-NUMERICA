@@ -1,0 +1,14 @@
+Se realizo la simulación de un Juego donde Cada integrante empieza con 2 dulces (sabores 1, 2 o 3). En cada iteración, se sigue la
+siguiente secuencia lógica:
+1. Se juntan todos los dulces del grupo (como si los pusieran sobre la mesa).
+2. Se aplican las siguientes reglas de canje:
+Regla 1: 3 dulces de distintos sabores → 1 chupetín.
+Regla 2: 6 dulces de distintos sabores (2 de cada tipo) → 2 chupetines + 1 dulce
+aleatorio.
+Regla 3: 1 chupetín → 3 dulces aleatorios.
+3. Se actualiza el total de chupetines acumulados por el grupo.
+4. El proceso continua iterativamente hasta que el grupo logra reunir los 9 chupetines.
+5. Una vez alcanzados los 9 chupetines, se reparten equitativamente: cada integrante recibe
+exactamente 1 chupetín.
+6. Finalmente, se muestra el progreso tanto de forma visual (grafico) como en consola,
+indicando las iteraciones y los canjes realizados en cada paso.

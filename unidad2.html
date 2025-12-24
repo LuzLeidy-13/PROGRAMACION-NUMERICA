@@ -1,110 +1,992 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1024">
+<title>Unidad 2 - Programación Numérica</title>
+
 <style>
 
-       /* GENERAL */
 body {
-    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0;
-    background: linear-gradient(to right, #4b1872, #0c010f,#2e074c);
-    color: #cf9df3;
+  margin: 0;
+  font-family: 'Gill Sans MT', Calibri, sans-serif;
+  background: linear-gradient(120deg, #0b0010, #240538, #0b0010);
+  background-size: 300% 300%;
+  animation: fondoAnimado 12s ease infinite;
+  color: #d8caff; 
+  text-align: center; 
 }
 
-/* ENCABEZADO */
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.nav-simple {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(30, 5, 45, 0.6);
+  border-bottom: 1px solid #a87fcc;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.nav-simple ul {
+  margin: 0; padding: 12px 20px;
+  display: flex; justify-content: flex-end; gap: 30px;
+  list-style: none;
+}
+
+.nav-simple a {
+  color: #e7d8ff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  font-size: 17px;
+}
+
+.nav-simple a:hover {
+  background: rgba(52, 20, 102, 0.4);
+  box-shadow: 0 0 12px #b68cf0;
+  transform: scale(1.08);
+}
+
+
 header {
-    border-bottom: 3px solid #757476;
-    padding: 25px 35px;
-    background: linear-gradient(#76198e99,#2e074c)
+  padding: 25px;
+  background: linear-gradient(to right, #000, #2a0334, #000);
+  border-bottom: 3px solid #a473dc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
 }
 
 .header-contenido {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  white-space: nowrap;
 }
 
 .logo {
-    width: 230px;
-    height: auto;
+  width: 160px;
+  height: auto;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .titulo h1 {
-    margin: 0;
-    font-size: 45px;
-    color: #f7f2fa;
-}
-.titulo h2, .titulo h3 {
-    margin: 3px 2;
-    font-size: 25px;
-}
-
-.contenedor {
-    margin: auto;
-    color: #ce9fed;
-    
+  margin: 0;
+  font-size: 34px;
+  font-weight: bold;
+  background: linear-gradient(to right, #b98cff, #6a4bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(173, 109, 255, 0.4);
 }
 
-/* BOTONES */
-.unidades {
-    text-align: center;
-    margin: 15px 0;
+.titulo h2 {
+  margin: 4px 0;
+  font-size: 26px;
+  color: #c7a8ff;
 }
+
+.titulo h3 {
+  margin: 4px 0;
+  font-size: 18px;
+  color: #d7b5ff;
+}
+
 
 .boton {
-    display: inline-block;
-    margin: 40px;
-    padding: 30px 60px;
-    background: #593274a3;
-    color: rgb(219, 182, 237);
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: 0.3s;
+  display: block;
+  width: 90%;
+  max-width: 1150px;
+  margin: 12px auto;
+  padding: 18px;
+  background:linear-gradient(#0b0010,#1f0933) rgba(67, 5, 117, 0.7);
+  border: 1px solid rgba(198, 195, 201, 0.5);
+  border-radius: 14px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
 }
 
 .boton:hover {
-    background: #1c072b;
+  transform: scale(1.04);
+  background: rgba(30, 5, 47, 0.75);
+  box-shadow: 0 0 18px #c099ff;
 }
 
+
+.contenido {
+  margin: 25px auto;
+  width: 95%;
+  max-width: 900px;
+  background: rgba(22, 5, 35, 0.75);
+  border-radius: 18px;
+  padding: 25px;
+  display: none;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(180,140,225,0.4);
+  animation: fadeIn 0.8s ease forwards;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+iframe {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  background: #fff;
+  border: none;
+}
+
+
+.descargas a, .cerrar {
+  background: linear-gradient(135deg, #7d4bff, #402080);
+  padding: 10px 25px;
+  color: white;
+  border-radius: 12px;
+  margin: 12px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(160,120,255,0.4);
+}
+
+.descargas a:hover, .cerrar:hover {
+  background: linear-gradient(135deg, #a275ff, #5125a3);
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(210,170,255,0.7);
+}
+
+#tituloTrabajo {
+  text-align: center;
+  font-size: 30px;
+  padding: 18px;
+  margin-top: 20px;
+  background: linear-gradient(#2a0334,#402080)(120,40,170,0.3);
+  border-radius: 14px;
+  display: none;
+  border: 1px solid rgba(160,120,200,0.5);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  animation: slideDown 0.7s ease;
+}
+
+@keyframes slideDown {
+  from { opacity:0; transform: translateY(-18px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* ========== TABLA ÍNDICE H ========== */
+.tabla-h {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+    background: rgb(255, 255, 255);
+    margin: 30px 0;
+}
+
+.tabla-h thead tr {
+    background: #1f0933; 
+    font-weight: bold;
+    text-align: center;
+}
+
+.tabla-h, .tabla-h th, .tabla-h td {
+    border: 1px solid #ebe8e8;
+}
+
+.tabla-h th, .tabla-h td {
+    padding: 8px 10px;
+}
+
+.tabla-h tbody tr:nth-child(even) {
+    background: #45155c;
+}
+
+.tabla-h tbody tr:nth-child(odd) {
+    background: rgb(175, 130, 198);
+}
+
+.titulo-h {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+#t1 .texto-legible {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
+
+#t6 {
+    text-align: left;
+}
+#t7 .texto-legible {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
+
+
+#t8 .texto-legible {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
+
+#t9 .texto-legible {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
+#t10 .texto-legible {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
+#t11 .texto-legible {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
+
+#t12 .texto-legible {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
+
+#t14 .texto-legible {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  font-family: "Calibri", "Gill Sans MT", sans-serif;
+  margin: 20px;
+}
 </style>
+
+
+</style>
+</head>
+
 <body>
 
-    <!-- ENCABEZADO -->
-    <header>
-        <div class="header-contenido">
-            <img src="logo_unap.png" alt="Logo Universidad" class="logo">
-            
-            <div class="titulo">
-                <h1>Universidad Nacional del Altiplano</h1>
-                <h2>Facultad de Ingeniería Estadística e Informática</h2>
-                <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
-                <h2>PROGRAMACIÓN NUMÉRICA - Unidad 2</h2>
-            </div>
+<nav class="nav-simple">
+  <ul>
+    <li><a href="index.html">FINESI</a></li>
+    <li><a href="unidad1.html">UNIDAD I</a></li>
+    <li><a href="unidad2.html">UNIDAD II</a></li>
+  </ul>
+</nav>
 
-            <img src="logo_finesi.png" alt="Logo Facultad" class="logo">
-        </div>
-    </header>
+<header>
+  <div class="header-contenido">
+    <img src="logo_unap.png" alt="Logo Universidad" class="logo">
+    <div class="titulo">
+      <h1>Universidad Nacional del Altiplano</h1>
+      <h3>Facultad de Ingeniería Estadística e Informática</h3>
+      <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
+      <h2>UNIDAD II</h2>
+      <h4>TRABAJOS ENCARGADOS DURANTE LA UNIDAD II</h4>
+    </div>
+    <img src="logo_finesi.png" alt="Logo Facultad" class="logo">
+  </div>
+</header>
 
-    <!-- CONTENIDO DE UNIDAD 2 -->
-    <section class="caja">
-        <h2>Unidad 2: Métodos Numéricos</h2>
+<h2 id="tituloTrabajo"></h2>
+
+<!-- BOTONES PRINCIPALES -->
+<section class="unidades" id="menuPrincipal">
+  <button class="boton" onclick="mostrarTrabajo('t1','Indice H  -  CTI Vitae')">Indice H - CTI Vitae </button>
+  <button class="boton" onclick="mostrarTrabajo('t2','Metodo de Biseccion ')">Metodo de Biseccion</button>
+  <button class="boton" onclick="mostrarTrabajo('t3','Metodo de la Secante  ')">Metodo de la Secante</button>
+  <button class="boton" onclick="mostrarTrabajo('t4','Metodo de Punto Fijo')">Metodo de punto Fijo</button>
+  <button class="boton" onclick="mostrarTrabajo('t5','Metodo de Regula Falsi')">Metodo de regula Falsi</button>
+  <button class="boton" onclick="mostrarTrabajo('t6','Gradiente de una Funcion')">gradiente de una funcion</button>
+  <button class="boton" onclick="mostrarTrabajo('t7','Gradientes comparación')">resumen del articulo</button>
+  <button class="boton" onclick="mostrarTrabajo('t8','Aplicación de Metodos Iterativos [Ejercicio Supervivencia] ')">Aplicación de Metodos Iterativos [Ejercicio Supervivencia] </button>
+  <button class="boton" onclick="mostrarTrabajo('t9','Lectura 30 - 10 -2025 (Resumen)')">Lectura-resumen</button>
+  <button class="boton" onclick="mostrarTrabajo('t10','Diferenciación Numerica [Ejercicios]  ')">Diferenciación Numerica [Ejercicios]</button>
+  <button class="boton" onclick="mostrarTrabajo('t11','Ejerccicios de Interpolacion Numerica')">Ejerccicios de Interpolacion Numerica</button>
+  <button class="boton" onclick="mostrarTrabajo('t12','Ejercicio Aplicado light house Apache jmeter')">Ejercicio Aplicado light house Apache jmeter</button>
+  <button class="boton" onclick="mostrarTrabajo('t13','Poster Cientifico')">Poster Cientifica</button>
+  <button class="boton" onclick="mostrarTrabajo('t14','Eigen Values')">Eigenvalores y Eigenvectores</button>
+  <button class="boton" onclick="mostrarTrabajo('t15','Introducción a Markov')">Practica Calificada</button>
+  <button class="boton" onclick="mostrarTrabajo('t16','Programacion Numerica')">Kook</button>
+
+</section>
+<!-- TRABAJO 1 -->
+<div id="t1" class="contenido">
+  <div class="texto-legible">
+    <h5>
+       El índice h es una métrica bibliométrica que combina la cantidad de publicaciones de un investigador con el
+        número de veces que estas han sido citadas. Un investigador tiene un índice h si ha publicado al menos h artículos
+         que han sido citados al menos h veces cada uno. Por ejemplo, un índice h de 10 significa que el autor tiene al 
+         menos 10 artículos que han sido citados al menos 10 veces cada uno. 
+    </h5> 
+  
+      <h2 class="titulo-h">Índice H de docentes de la Facultad de Ingeniería Estadística e Informática</h2>
+</div>
+<table class="tabla-h">
+    <thead>
+        <tr>
+            <th>Docente</th>
+            <th>Índice H</th>
+            <th>N° de publicaciones</th>
+            <th>N° de citas</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr><td>Torrres-Cruz, Fred</td><td>4</td><td>40</td><td>74</td></tr>
+        <tr><td>Coyla-Idme, Leonel</td><td>1</td><td>5</td><td>1</td></tr>
+        <tr><td>Tumi-Figueroa, Ernesto Nayer</td><td>3</td><td>6</td><td>23</td></tr>
+        <tr><td>Tito Lipa, José Pánfilo</td><td>0</td><td>3</td><td>0</td></tr>
+        <tr><td>Canqui-Flores, Bernabé</td><td>3</td><td>8</td><td>20</td></tr>
+        <tr><td>Mendoza-Mollocondo, Charles Ignacio</td><td>3</td><td>8</td><td>17</td></tr>
+        <tr><td>Huata-Panca, Percy</td><td>2</td><td>3</td><td>14</td></tr>
+        <tr><td>Apaza-Tarqui, Alejandro</td><td>1</td><td>5</td><td>6</td></tr>
+        <tr><td>Carpio Vargas, Edgar Eloy</td><td>3</td><td>9</td><td>27</td></tr>
+        <tr><td>López-Cueva, Milton Antonio</td><td>1</td><td>6</td><td>4</td></tr>
+        <tr><td>Ibañez-Quispe, Vladimiro</td><td>5</td><td>21</td><td>52</td></tr>
+        <tr><td>Melgarejo-Bolívar, Romel P.</td><td>3</td><td>6</td><td>—</td></tr>
+        <tr><td>Herrera-Urtiaga, Alain Paul</td><td>0</td><td>3</td><td>0</td></tr>
+        <tr><td>Laura Murillo, null</td><td>1</td><td>2</td><td>1</td></tr>
+        <tr><td>Choquejahua-Acero, Remo</td><td>1</td><td>2</td><td>2</td></tr>
+        <tr><td>Gonzalo Copari Romero, Fredy</td><td>0</td><td>2</td><td>0</td></tr>
+    </tbody>
+</table>
+<h3>Creacion de cuenta en CTI Vitae en el PDF
+</h3>
+  
+    <div class="descargas">
+        <a href="INDICE_H.pdf" target="_blank">📄 Ver PDF</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+<!-- TRABAJO 2-->
+<div id="t2" class="contenido">
+    <iframe src="metodo de biseccion.txt"></iframe>
+    <div class="descargas">
+        <a href="biseccion.pdf" target="_blank">📄 Ver PDF</a>
+        <a href="metodo de biseccion.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+<!-- TRABAJO 3 -->
+<div id="t3" class="contenido">
+    <iframe src="metodoSecante.txt"></iframe>
+    <div class="descargas">
+        <a href="metodo_de_la_Secante.pdf" target="_blank">📄 Ver PDF</a>
+        <a href="metododeSecante.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+<!-- TRABAJO 4 -->
+<div id="t4" class="contenido">
+    <h3>Ejercicios Propuestos</h3>
+    <iframe src="metodo del punto fijo.txt"></iframe>
+    <div class="descargas">
+        <a href="metodo_de_punto_fijo.pdf" target="_blank">📄 Ver PDF</a>
+        <a href="metodo de puntofijo.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+<!-- TRABAJO 5 -->
+<div id="t5" class="contenido">
+    <iframe src="metodo de regula falsi.txt"></iframe>
+    <div class="descargas">
+        <a href="metodo_de_regula_falsi.pdf" target="_blank">📄 Ver PDF</a>
+        <a href="metododeRegulaFalsi.py" download>⬇ Descargar Código Python</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+<!-- TRABAJO 6 -->
+<div id="t6" class="contenido">
+  <h2>Gradiente</h2>
+  <h3>
+     El gradiente une las derivadas parciales de una función de varias variables en un vector.
+  </h3>
+  <h3>
+    Para una variable: Si tienes una función de una sola variable, \(f(x)\), no hay "varias" variables, así que solo tienes una derivada: \(f^{\prime }(x)\) o \(\frac{df}{dx}\).
+  </h3>
+<h3>
+  Representación: Se denota con el operador Nabla (\(\nabla \)).Para \(f(x)\), sería \(\nabla f(x)=\frac{df}{dx}\).
+</h3>
+  
+    <iframe src="gradienteunavariable.txt"></iframe>
+<h3>
+El gradiente para una función de dos variables, \(z=f(x,y)\), es un vector que indica la dirección de máximo crecimiento de la función, y se calcula como un vector de sus derivadas parciales: \(\nabla f(x,y)=\langle \frac{\partial f}{\partial x},\frac{\partial f}{\partial y}\rangle \) o \(\frac{\partial f}{\partial x}\mathbf{i}+\frac{\partial f}{\partial y}\mathbf{j}\), apuntando siempre perpendicular a las curvas de nivel y señalando hacia el valor más rápido de la función. 
+
+</h3>
+  
+    <iframe src="gradientedosvariables.txt"></iframe>
+
+    <div class="descargas">
+        <a href="GRADEINTE.pdf" target="_blank">📄 Ver PDF</a>
+        <a href="gradienteunavariable.R" download>⬇ Descargar Código R</a>
+        <a href="gradientedosvariables.R" download>⬇ Descargar Código R</a>
+    </div>
+
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+<script>
+    window.MathJax = {
+        tex: { inlineMath: [['\\(', '\\)']] }
+    };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- TRABAJO 7 -->
+<div id="t7" class="contenido">
+  <div class="texto-legible">
+
+<h2>COMPARING THE MOORE-PENROSE PSEUDOINVERSE AND GRADIENT DESCENT FOR SOLVING LINEAR REGRESSION PROBLEMS: A PERFORMANCE ANALYSIS</h2>
+
+<p>
+This work compares two main methods for solving linear regression problems:  
+<b>The Moore-Penrose pseudoinverse</b> (a direct mathematical solution) and  
+<b>Gradient descent</b> (an iterative optimization method).
+</p>
+
+<p>
+Linear regression models the relationship between a dependent variable and one or more independent variables, 
+seeking the parameters that minimize the squared error (OLS).  
+The pseudoinverse provides an exact solution, while gradient descent updates the parameters iteratively.
+</p>
+
+<p>
+The pseudoinverse is commonly implemented using <b>Singular Value Decomposition (SVD)</b>, avoiding numerical 
+issues associated with directly computing \((X^{T}X)^{-1}\).  
+This approach is stable but computationally expensive, dominated by a cubic cost \((d^3)\), limiting its 
+use in high-dimensional problems.
+</p>
+
+<p>
+Gradient descent is analyzed from an optimization perspective, where convergence depends on the learning rate 
+and the spectral properties of matrix \(X\).  
+Well-conditioned matrices converge smoothly, while ill-conditioned ones lead to instability and slow progress.
+</p>
+
+<p>
+The study concludes that choosing between the analytical and iterative approaches depends on dimensionality, 
+numerical conditioning, and available computational resources.  
+The work also suggests hybrid strategies that combine the strengths of both methods.
+</p>
+
+<hr>
+
+<h3>COMPARISON OF PERFORMANCE BETWEEN OPTIMIZATION METHODS</h3>
+
+<p>
+The goal of this test was to evaluate the computational efficiency of the R function <b>lm()</b> compared to a 
+manually implemented gradient descent. Simulated datasets of various sizes were used.
+</p>
+
+<p>Two performance metrics were recorded:</p>
+
+<ul>
+    <li>Processing time (seconds)</li>
+    <li>Memory usage (megabytes)</li>
+</ul>
+
+<table border="1" style="border-collapse:collapse; width:100%; text-align:center;">
+    <tr><th>Tamaño</th><th>Método</th><th>Tiempo</th><th>Memoria</th></tr>
+    <tr><td>1e+02</td><td>lm</td><td>0.00</td><td>0.01824</td></tr>
+    <tr><td>1e+02</td><td>Gradiente</td><td>0.02</td><td>7.99</td></tr>
+    <tr><td>1e+03</td><td>lm</td><td>0.00</td><td>0.16927</td></tr>
+    <tr><td>1e+03</td><td>Gradiente</td><td>0.06</td><td>6.67</td></tr>
+    <tr><td>5e+03</td><td>lm</td><td>0.00</td><td>0.86483</td></tr>
+    <tr><td>5e+03</td><td>Gradiente</td><td>0.34</td><td>1.91</td></tr>
+    <tr><td>1e+04</td><td>lm</td><td>0.001</td><td>1.72841</td></tr>
+    <tr><td>1e+04</td><td>Gradiente</td><td>0.78</td><td>3.45</td></tr>
+</table>
+
+<hr>
+
+<h3>GRÁFICOS COMPARATIVOS</h3>
+
+<div style="text-align:center;">
+    <img src="comparacion.png" alt="Gráfico del análisis" style="width:45%; border-radius:10px;">
+</div>
+
+<p><b>Gráfico de Tiempo de Ejecución</b></p>
+<ul>
+    <li>Tiempo (segundos): 0, 2, 4</li>
+    <li>Tamaño de muestra: 0, 25000, 50000, 75000, 100000</li>
+    <li>Métodos: Gradiente, lm</li>
+</ul>
+
+<p><b>Gráfico de Uso de Memoria</b></p>
+<ul>
+    <li>Memoria (MB): 8000, 6000, 4000, 2000, 0</li>
+    <li>Tamaño de muestra: 0, 25000, 50000, 75000, 100000</li>
+    <li>Métodos: Gradiente, lm</li>
+</ul>
+<div class="descargas" style="text-align:center;">
+    <a href="comparación de rendimiento entre métodos de optimización .pdf" target="_blank">📄 Ver PDF</a>
+</div>
+
+<div style="text-align:center; margin-top:15px;">
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- TRABAJO 8  -->
+<div id="t8" class="contenido">
+    <h2>DESCRIPCIÓN DE LA LÓGICA DEL JUEGO CARAMELOS Y CHUPETINES</h2>
+
+    <div class="texto-legible">
+       <p>
+        Cada integrante empieza con 2 dulces (sabores 1, 2 o 3). En cada iteración, se sigue la siguiente secuencia lógica:
+        </p>
+
+        <p>1. Se juntan todos los dulces del grupo (como si los pusieran sobre la mesa).</p>
+
+        <p>2. Se aplican las siguientes reglas de canje:</p>
+        <ul>
+            <li><b>Regla 1:</b> 3 dulces de distintos sabores → 1 chupetín.</li>
+            <li><b>Regla 2:</b> 6 dulces de distintos sabores (2 de cada tipo) → 2 chupetines + 1 dulce aleatorio.</li>
+            <li><b>Regla 3:</b> 1 chupetín → 3 dulces aleatorios.</li>
+        </ul>
+
+        <p>3. Se actualiza el total de chupetines acumulados por el grupo.</p>
+
+        <p>4. El proceso continúa iterativamente hasta que el grupo logra reunir los 9 chupetines.</p>
+
+        <p>5. Una vez alcanzados los 9 chupetines, se reparten equitativamente: cada integrante recibe exactamente 1 chupetín.</p>
+
+        <p>6. Finalmente, se muestra el progreso tanto de forma visual (gráfico) como en consola, indicando las iteraciones y los canjes realizados en cada paso.</p>
+    </div>
+
+    <div class="descargas">
+        <a href="Aplicacion_de_metodos_iterativos (1).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="caramelos.R" download>⬇ Descargar Código R</a>
+    </div>
+
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+<!-- TRABAJO 9 -->
+<div id="t9" class="contenido">
+
+    <div class="texto-legible">
+        <h2>SCIENCE OF COMPUTER PROGRAMMING</h2>
+        <h3>SINGLE-PATH INFORMATION PROPAGATION IN OPTIONAL GRADIENT BASED ALGORITHMS</h3>
+
         <p>
-            En esta unidad se estudiarán los métodos numéricos más usados para resolver
-            problemas de ecuaciones, interpolación, integración y derivación numérica.
+        The article addresses the challenges of distributed computing in dynamic environments such as 
+        the Internet of Things (IoT) and wireless networks, where devices frequently change position 
+        and communication frequency. Gradient computation (estimating distances or shortest paths to 
+        source nodes) is essential for self-organization, information dissemination, and distributed 
+        detection.
+        </p>
+
+        <p>
+        However, existing gradient algorithms struggle to balance accuracy and responsiveness to 
+        environmental changes. The BIS (Bounded Information Speed) gradient algorithm is an improvement 
+        over existing distributed gradient methods for estimating distances in dynamic networks such as 
+        IoT, ad-hoc wireless systems, and pervasive computing.
+        </p>
+
+        <p>
+        Traditional gradient algorithms (classic, CRF, and FLEX) fail to achieve an adequate trade-off 
+        between accuracy, reaction speed, and output smoothness. They exhibit:
+        <br>• Systematic underestimation in mobile environments.
+        <br>• Slow recovery when a source disappears (“rising value” problem).
+        <br>• Instability in the presence of noise or mobility.
+        </p>
+
+        <p>
+        The BIS gradient introduces a lower bound on information speed (ℓ), using temporal information 
+        to control the propagation speed of updates. When ℓ is set close to the average communication 
+        speed, the algorithm achieves optimal reactivity.
+        </p>
+
+        <p>
+        BIS was tested against other algorithms in isolation tests, communication channels, and data 
+        collection. It achieved higher accuracy, faster recovery, and better stability (especially with 
+        BISFLEX).
+        </p>
+
+        <p>
+        In conclusion, the BIS gradient algorithm is a robust and efficient approach for dynamic 
+        environments, outperforming previous methods in both precision and adaptability.
+        </p>
+
+        <h3>(Gráfico y Leyendas)</h3>
+        <img src="grafica.png" alt="Gráfico del análisis">
+
+        <p>
+        • space variability = 0.5<br>
+        • noise = 1<br>
+        • Algorithms: bisflex50, bis50, bis90, bisflex90, classic, crf, flex
+        </p>
+
+        <h3> Interpretation</h3>
+
+        <p>
+    • For times 0 &lt; t &lt; 100: all algorithms increase the error while the field is being formed.<br>
+    • Between t = 200 and t = 300, a perturbation occurs that raises the error.<br>
+    • After t = 400, BIS and BISFLEX recover more quickly and stabilize the error.<br><br>
+    This confirms that BIS gradients control propagation, reduce oscillations, and 
+    adapt more rapidly to a dynamic environment.
+</p>
+
+    </div>
+
+    <div class="descargas">
+        <a href="lectura-resumen y grafico. luz.pdf" target="_blank">📄 Ver PDF</a>
+    </div>
+
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+<!-- TRABAJO 10 -->
+<div id="t10" class="contenido">
+    <div class="texto-legible">
+      
+        <h2>Diferenciación Numérica</h2>
+        <p>
+            La <b>diferenciación numérica</b> es el proceso de aproximar la derivada de una función 
+            utilizando valores discretos de la función en puntos específicos.  
+            Se utiliza cuando no se dispone de una expresión analítica de la derivada o es muy complicada de calcular.
+        </p>
+
+        <h3>Diferencias Finitas</h3>
+        <p>
+            Una técnica común de diferenciación numérica es el uso de <b>diferencias finitas</b>, que 
+            aproxima derivadas mediante combinaciones de valores de la función en puntos cercanos.
         </p>
         <ul>
-            <li>Métodos de búsqueda de raíces</li>
-            <li>Interpolación y aproximación</li>
-            <li>Integración numérica</li>
-            <li>Derivación numérica</li>
+            <li><b>Diferencia hacia adelante:</b> \( f'(x) \approx \frac{f(x+h) - f(x)}{h} \)</li>
+            <li><b>Diferencia hacia atrás:</b> \( f'(x) \approx \frac{f(x) - f(x-h)}{h} \)</li>
+            <li><b>Diferencia central:</b> \( f'(x) \approx \frac{f(x+h) - f(x-h)}{2h} \)</li>
         </ul>
-    </section>
 
-    <!-- BOTÓN DE REGRESAR -->
-    <div class="unidades">
-        <a href="index.html" class="boton">⬅ Regresar al Portafolio</a>
+        <p>
+            Estas aproximaciones permiten calcular derivadas de forma eficiente, aunque su precisión depende 
+            del tamaño del paso \(h\) y de la suavidad de la función.
+        </p>
     </div>
+
+    <div class="descargas">
+        <a href="DIFERENCIACION_NUMERICA (3).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="ejerciciosDiferenciacionNumerica.zip" download>⬇ Descargar Código R</a>
+    </div>
+    
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+<!-- TRABAJO 11 -->
+<div id="t11" class="contenido">
+    <div class="texto-legible">
+
+        <h2>Interpolación Numérica</h2>
+        <p>
+            La <b>interpolación numérica</b> es un conjunto de métodos para estimar valores de una función
+            \(f(x)\) en puntos intermedios a partir de un conjunto de datos conocidos \((x_i, y_i)\).  
+            Es útil cuando la función exacta es desconocida o difícil de calcular.
+        </p>
+
+        <h3>Métodos de Interpolación</h3>
+
+        <ul>
+            <li>
+                <b>Interpolación Lineal:</b>  
+                Aproxima la función entre dos puntos consecutivos mediante una línea recta.  
+                <br>
+                <i>Fórmula:</i>  
+                \[
+                    f(x) \approx f(x_i) + \frac{f(x_{i+1}) - f(x_i)}{x_{i+1} - x_i} (x - x_i), \quad x_i \le x \le x_{i+1}
+                \]
+            </li>
+
+            <li>
+                <b>Interpolación Cuadrática:</b>  
+                Ajusta un polinomio de grado 2 que pase por tres puntos consecutivos \((x_0, y_0), (x_1, y_1), (x_2, y_2)\).  
+                <br>
+                <i>Polinomio:</i>  
+                \[
+                    P_2(x) = y_0 \frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)} +
+                             y_1 \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)} +
+                             y_2 \frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}
+                \]
+            </li>
+
+            <li>
+                <b>Interpolación de Lagrange:</b>  
+                Ajusta un polinomio de grado n que pase por n+1 puntos.  
+                <br>
+                <i>Fórmula:</i>  
+                \[
+                    P_n(x) = \sum_{i=0}^{n} y_i \prod_{\substack{j=0 \\ j \ne i}}^{n} \frac{x - x_j}{x_i - x_j}
+                \]
+            </li>
+
+            <li>
+                <b>Interpolación Dividida de Newton:</b>  
+                Forma polinomios de interpolación usando diferencias divididas, útil para agregar nuevos puntos sin recalcular todo el polinomio.  
+                <br>
+                <i>Polinomio:</i>  
+                \[
+                    P_n(x) = f[x_0] + f[x_0,x_1](x-x_0) + f[x_0,x_1,x_2](x-x_0)(x-x_1) + \dots + f[x_0,\dots,x_n]\prod_{i=0}^{n-1}(x-x_i)
+                \]
+                <br>
+                donde \(f[x_i,x_{i+1},\dots,x_j]\) son diferencias divididas.
+            </li>
+
+            <li>
+                <b>Splines Cúbicos:</b>  
+                Ajusta polinomios cúbicos por tramos, garantizando continuidad y suavidad de primera y segunda derivada.  
+                <br>
+                <i>Condiciones:</i>  
+                \[
+                    S_i(x_i) = y_i, \quad S_i(x_{i+1}) = y_{i+1}, \quad S_i'(x_{i+1}) = S_{i+1}'(x_{i+1}), \quad S_i''(x_{i+1}) = S_{i+1}''(x_{i+1})
+                \]
+            </li>
+        </ul>
+
+        <h3>Error de Interpolación</h3>
+        <p>
+            El error depende del método y de la función que se aproxima:  
+            <b>Polinomio de Lagrange:</b>  
+            \[
+                R_n(x) = f(x) - P_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!} \prod_{i=0}^{n} (x - x_i), \quad \xi \in [x_0, x_n]
+            \]  
+            Esto indica que el error disminuye si los puntos están más cercanos y si la función es suave.
+        </p>
+    </div>
+
+    <div class="descargas">
+        <a href="INTERPOLACION (2).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="interpolacion.zip" download>⬇ Descargar Código R</a>
+    </div>
+    
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+<!-- TRABAJO 12 -->
+<div id="t12" class="contenido">
+  <div class="texto-legible">
+        <h2>Lighthouse y Apache JMeter</h2>
+
+    <h3>Lighthouse</h3>
+    <p>
+        Lighthouse es una herramienta automatizada de <strong>Google</strong> que permite auditar
+        la calidad de aplicaciones web. Evalúa distintos aspectos relacionados con la experiencia
+        del usuario y el rendimiento del sitio.
+    </p>
+
+    <ul>
+        <li><strong>Performance:</strong> mide la velocidad y eficiencia de carga.</li>
+        <li><strong>Accesibilidad:</strong> verifica que la web sea usable por todas las personas.</li>
+        <li><strong>Buenas prácticas:</strong> revisa el uso correcto de estándares web.</li>
+        <li><strong>SEO:</strong> analiza la optimización para motores de búsqueda.</li>
+        <li><strong>PWA:</strong> evalúa características de aplicaciones web progresivas.</li>
+    </ul>
+
+    <p>
+        Se utiliza principalmente para medir la <strong>experiencia del usuario</strong>
+        en el navegador, considerando carga, interactividad y estabilidad visual.
+    </p>
+
+    <h3>Apache JMeter</h3>
+    <p>
+        Apache JMeter es una herramienta <strong>open-source</strong> utilizada para realizar
+        pruebas de carga y rendimiento en sistemas informáticos.
+    </p>
+
+    <ul>
+        <li>Simula <strong>usuarios concurrentes</strong>.</li>
+        <li>Mide <strong>tiempos de respuesta</strong>, throughput y errores.</li>
+        <li>Permite probar <strong>APIs, servicios web, bases de datos</strong> y aplicaciones web.</li>
+    </ul>
+
+    <h3>Resumen</h3>
+    <p>
+        <strong>Lighthouse</strong> evalúa la calidad y el rendimiento desde el punto de vista
+        del usuario final.<br>
+        <strong>Apache JMeter</strong> mide el rendimiento y la capacidad del sistema bajo carga.
+    </p>
+  </div>
+    <div class="descargas">
+        <a href="Aplicado_light_house_Apache_jmeter (2).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="estimaciondelGradiente.R" download>⬇ Descargar Código R</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+<!-- TRABAJO 13 -->
+<div id="t13" class="contenido">
+    <div class="descargas">
+        <a href="poster cientifico (1).png" target="_blank">📄 Ver PDF</a>
+        <a href="metodo de puntofijo.py" download>⬇ Descargar Código R</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+<!-- TRABAJO 14 -->
+<div id="t14" class="contenido">
+
+  <div class="texto-legible">
+ <h2>Eigenvalores y Eigenvectores</h2>
+
+    <h3>Concepto</h3>
+    <p>
+        Los <strong>eigenvalores</strong> y <strong>eigenvectores</strong> describen cómo una matriz
+        transforma un vector. Un eigenvector mantiene su dirección después de la transformación,
+        y el eigenvalor indica cuánto se escala dicho vector.
+    </p>
+
+    <h3>Definición Matemática</h3>
+    <p>
+        Sea <strong>A</strong> una matriz cuadrada. Un vector no nulo <strong>v</strong> es un
+        eigenvector de <strong>A</strong> si cumple:
+    </p>
+
+    <p style="text-align:center; font-size:18px;">
+        <strong>A v = λ v</strong>
+    </p>
+
+    <p>
+        donde <strong>λ</strong> es el eigenvalor asociado al eigenvector <strong>v</strong>.
+    </p>
+
+    <h3>Cálculo de Eigenvalores</h3>
+    <p>
+        Los eigenvalores se obtienen resolviendo la ecuación característica:
+    </p>
+
+    <p style="text-align:center; font-size:18px;">
+        <strong>det(A − λI) = 0</strong>
+    </p>
+
+    <p>
+        Una vez encontrado cada eigenvalor, el eigenvector se obtiene resolviendo:
+    </p>
+
+    <p style="text-align:center; font-size:18px;">
+        <strong>(A − λI)v = 0</strong>
+    </p>
+
+    <h3>Importancia en Métodos de Optimización</h3>
+    <p>
+        En optimización, los eigenvalores de la <strong>matriz Hessiana</strong> permiten clasificar
+        puntos críticos de una función.
+    </p>
+
+    <p style="text-align:center;">
+        <strong>
+        λ &gt; 0 → Mínimo local<br>
+        λ &lt; 0 → Máximo local<br>
+        λ positivos y negativos → Punto silla
+        </strong>
+    </p>
+
+  </div>
+    
+    <div class="descargas">
+        <a href="Eigenvalores_y_Eigenvectores (1).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="Eigenvalores y Eigenvectores.R" download>⬇ Descargar R</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+<!-- TRABAJO 15 -->
+<div id="t15" class="contenido">
+    <div class="descargas">
+        <a href="Eigenvalores_y_Eigenvectores (1).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="Eigenvalores y Eigenvectores.R" download>⬇ Descargar R</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+<!-- TRABAJO 16 -->
+<div id="t16" class="contenido">
+    <div class="descargas">
+        <a href="Eigenvalores_y_Eigenvectores (1).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="Eigenvalores y Eigenvectores.R" download>⬇ Descargar R</a>
+    </div>
+    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+<!-- TRABAJO 14 -->
+<div id="t14" class="contenido">
+    <button class="index" onclick="cerrarTrabajo()">✖ Cerrar</button>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+function mostrarTrabajo(id, nombre) {
+  document.getElementById("menuPrincipal").style.display = "none";
+  document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+  const titulo = document.getElementById("tituloTrabajo");
+  titulo.textContent = nombre;
+  titulo.style.display = 'block';
+  window.scrollTo({ top: 250, behavior: 'smooth' });
+}
+function cerrarTrabajo() {
+  document.querySelectorAll('.contenido').forEach(div => div.style.display = 'none');
+  document.getElementById("menuPrincipal").style.display = 'block';
+  const titulo = document.getElementById("tituloTrabajo");
+  titulo.style.display = 'none';
+  titulo.textContent = "";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>

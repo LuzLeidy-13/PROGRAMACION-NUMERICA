@@ -1,0 +1,8 @@
+The objective of this test was to evaluate the computational efficiency of the R linear regression method ($lm()$) compared to the manually implemented gradient descent algorithm1. To achieve this, simulated datasets of different sizes were generated.
+
+During execution, two main metrics were recorded:
+
+-The processing time (in seconds)
+-The memory usage (in megabytes)
+
+The results obtained are visualized through comparative graphs, which show the difference between the behavior of the $lm()$ model — based on optimized matrix calculations 6— and gradient descent, which requires multiple iterations to converge.

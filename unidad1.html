@@ -3,215 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1024">
-<title>Unidad 1 - Programación Numérica</title>
+<title>Unidad 2 - Programación Numérica</title>
+
 <style>
-/* GENERAL */
+
+/* --------------------- */
+/*   FONDO DINÁMICO      */
+/* --------------------- */
 body {
-  font-family: 'Gill Sans MT', Calibri, sans-serif;
   margin: 0;
-  background: linear-gradient(to right, #0c010f, #2e074c, #0c010f);
-  color: #ffffff;
-  animation: fadeIn 1.5s ease-in;
+  font-family: 'Gill Sans MT', Calibri, sans-serif;
+  background: linear-gradient(120deg, #0b0010, #240538, #0b0010);
+  background-size: 300% 300%;
+  animation: fondoAnimado 12s ease infinite;
+  color: #d8caff; /* Nuevo color suave */
+  text-align: center; /* Centrar todo el texto */
 }
 
-/* 🔝 MENÚ FIJO */
-.nav-simple {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(17, 1, 26, 0.97);
-  border-bottom: 2px solid #9e9b9e;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
+/* --------------------- */
+/*   MENÚ SUPERIOR       */
+/* --------------------- */
+
+.nav-simple {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(30, 5, 45, 0.6);
+  border-bottom: 1px solid #a87fcc;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
 .nav-simple ul {
-  margin: 0; padding: 10px 20px;
-  display: flex; justify-content: flex-end; gap: 25px;
+  margin: 0; padding: 12px 20px;
+  display: flex; justify-content: flex-end; gap: 30px;
   list-style: none;
 }
+
 .nav-simple a {
-  color: #8c898f; text-decoration: none;
-  font-weight: bold; padding: 8px 14px;
-  border-radius: 8px; transition: 0.3s;
+  color: #e7d8ff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  font-size: 17px;
 }
-.nav-simple a:hover { background: #2d0531; transform: scale(1.05); }
 
-/* 🏫 ENCABEZADO */
+.nav-simple a:hover {
+  background: rgba(160, 100, 255, 0.4);
+  box-shadow: 0 0 12px #b68cf0;
+  transform: scale(1.08);
+}
+
+/* --------------------- */
+/*     ENCABEZADO        */
+/* --------------------- */
+
 header {
-  border-bottom: 3px solid #888888;
-  background: linear-gradient(#000, #190118, #300441);
-  padding: 20px 40px;
-  text-align: center;
+  padding: 25px;
+  background: linear-gradient(to right, #000, #2a0334, #000);
+  border-bottom: 3px solid #a473dc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
 }
 
-/* ✅ ENCABEZADO TODO EN UNA SOLA LÍNEA */
 .header-contenido {
   display: flex;
   align-items: center;
-  justify-content: center;   /* centra todo el bloque */
-  gap: 20px;
-  flex-wrap: nowrap;         /* ❗ evita que los logos bajen */
-  overflow: hidden;
+  justify-content: center;
+  gap: 35px;
   white-space: nowrap;
-  padding: 10px 5px;
 }
 
-/* 🎓 LOGOS Y TÍTULOS */
-/* 🎓 LOGOS */
 .logo {
-  width: 180px;
+  width: 160px;
   height: auto;
-  flex: 0 0 auto;            /* no se estiran ni encogen */
-  transition: width 0.3s ease;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-/* 🧩 TÍTULO CENTRAL */
-.titulo {
-  flex: 1 1 auto;            /* se expande entre los dos logos */
-  text-align: center;
-  min-width: 0;
-  overflow: hidden;
+.logo:hover {
+  transform: scale(1.05);
 }
 
-/* ✨ TEXTOS DEL TÍTULO */
 .titulo h1 {
   margin: 0;
-  font-size: 30px;
-  background: linear-gradient(to right, #795c99, #c088dc);
+  font-size: 34px;
+  font-weight: bold;
+  background: linear-gradient(to right, #b98cff, #6a4bff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: colorShift 6s infinite alternate;
+  text-shadow: 0 0 10px rgba(173, 109, 255, 0.4);
 }
 
 .titulo h2 {
-  margin: 0;
-  font-size: 30px;
-  color: #d3c1ff;
+  margin: 4px 0;
+  font-size: 26px;
+  color: #c7a8ff;
 }
 
 .titulo h3 {
   margin: 4px 0;
   font-size: 18px;
-  color: #b9a6d9;
+  color: #d7b5ff;
 }
 
-/* 🎨 BOTONES PRINCIPALES */
-.unidades {
-  text-align: center;
-  margin: 20px 0;
-}
+/* ---------------------------- */
+/*       BOTONES PRINCIPALES    */
+/* ---------------------------- */
+
 .boton {
   display: block;
   width: 90%;
-  max-width: 1200px;
-  margin: 10px auto;
-  padding: 20px 0;
-  background: linear-gradient(135deg, #300441, #190118);
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 18px;
-  text-align: center;
-  transition: all 0.3s ease;
+  max-width: 1150px;
+  margin: 12px auto;
+  padding: 18px;
+  background: rgba(80, 20, 130, 0.7);
+  border: 1px solid rgba(150,100,190,0.5);
+  border-radius: 14px;
+  color: #fff;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-}
-.boton:hover {
-  background: linear-gradient(135deg, #4b0b6b, #220124);
-  transform: scale(1.03);
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
 }
 
-/* 📄 CONTENIDO DE TRABAJO */
-.caja {
-  text-align: center;
-  padding: 20px;
+.boton:hover {
+  transform: scale(1.04);
+  background: rgba(120, 40, 170, 0.75);
+  box-shadow: 0 0 18px #c099ff;
 }
+
+/* ---------------------------- */
+/*      CONTENIDO DE TARJETAS   */
+/* ---------------------------- */
+
 .contenido {
-  margin: 10px auto;
-  width: 100%;
+  margin: 25px auto;
+  width: 95%;
   max-width: 900px;
-  background: #1c072b;
-  border-radius: 15px;
-  padding: 20px;
+  background: rgba(22, 5, 35, 0.75);
+  border-radius: 18px;
+  padding: 25px;
   display: none;
-  animation: fadeIn 0.8s ease-in;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(180,140,225,0.4);
+  animation: fadeIn 0.8s ease forwards;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 iframe {
   width: 100%;
   height: 500px;
-  border: none;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: 12px;
   background: #fff;
+  border: none;
 }
 
-/* 🔘 DESCARGAS Y CIERRE */
-.descargas {
-  text-align: center;
-}
+/* ---------------------------- */
+/*    DESCARGAS & BOTONES       */
+/* ---------------------------- */
+
 .descargas a, .cerrar {
-  background-color: #733f92;
+  background: linear-gradient(135deg, #7d4bff, #402080);
+  padding: 10px 25px;
   color: white;
-  padding: 10px 20px;
-  margin: 10px;
-  text-decoration: none;
-  border-radius: 10px;
+  border-radius: 12px;
+  margin: 12px;
   display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
   transition: 0.3s;
-}
-.descargas a:hover, .cerrar:hover {
-  background-color: #08010c;
-  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(160,120,255,0.4);
 }
 
-/* 🧾 TÍTULO DEL TRABAJO */
+.descargas a:hover, .cerrar:hover {
+  background: linear-gradient(135deg, #a275ff, #5125a3);
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(210,170,255,0.7);
+}
+
+/* ---------------------------- */
+/* TITULO DINÁMICO TRABAJO      */
+/* ---------------------------- */
+
 #tituloTrabajo {
   text-align: center;
-  font-size: 28px;
-  color: #ffffff;
-  background-color: #17021e89;
-  padding: 15px;
-  margin: 0;
+  font-size: 30px;
+  padding: 18px;
+  margin-top: 20px;
+  background: rgba(120,40,170,0.3);
+  border-radius: 14px;
   display: none;
-  font-weight: bold;
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  animation: fadeInDown 0.8s ease;
+  border: 1px solid rgba(160,120,200,0.5);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  animation: slideDown 0.7s ease;
 }
 
-/* 📱 RESPONSIVE */
-@media (max-width: 768px) {
-  .header-contenido {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .logo { width: 120px; margin: 10px auto; }
-  .titulo h1 { font-size: 26px; }
-  .titulo h2 { font-size: 20px; }
-  .titulo h3 { font-size: 14px; }
+@keyframes slideDown {
+  from { opacity:0; transform: translateY(-18px); }
+  to { opacity:1; transform: translateY(0); }
 }
-
-/* 🌈 ANIMACIÓN SUAVE DE COLOR */
-@keyframes colorShift {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(180deg); }
-}
-
-/* 📱 ADAPTACIÓN A CELULARES */
-@media (max-width: 768px) {
-  .header-contenido { gap: 10px; }
-  .logo { width: 90px; }
-  .titulo h1 { font-size: 22px; }
-  .titulo h2 { font-size: 18px; }
-  .titulo h3 { font-size: 12px; }
-}
-
-@media (max-width: 480px) {
-  .logo { width: 70px; }
-  .titulo h1 { font-size: 16px; }
-  .titulo h2 { font-size: 14px; }
-  .titulo h3 { font-size: 11px; }
-}
-
 
 </style>
 </head>

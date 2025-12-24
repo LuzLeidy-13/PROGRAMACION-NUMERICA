@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio | Programación Numérica</title>
+
+<style>
+/* 🎨 GENERAL */
+body {
+  font-family: 'Gill Sans MT', Calibri, sans-serif;
+  margin: 0;
+  background: linear-gradient(to right, #0c010f, #2e074c, #0c010f);
+  color: #b0aeb0;
+  animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔝 MENÚ FIJO */
+.nav-simple {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(17, 1, 26, 0.97);
+  border-bottom: 2px solid #676567;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.nav-simple ul {
+  margin: 0; padding: 10px 20px;
+  display: flex; justify-content: flex-end; gap: 25px;
+  list-style: none;
+}
+.nav-simple a {
+  color: #fff; text-decoration: none;
+  font-weight: bold; padding: 8px 14px;
+  border-radius: 8px; transition: 0.3s;
+}
+.nav-simple a:hover { background: #2d0531; }
+
+/* 🏫 ENCABEZADO */
+header {
+  border-bottom: 3px solid #757476;
+  background: linear-gradient(#000, #190118, #300441);
+  padding: 20px 40px;
+  text-align: center;
+}
+.header-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;          /* ❌ impide que los elementos bajen */
+  overflow: hidden;           /* oculta cualquier desborde si hay */
+  white-space: nowrap;        /* 🔹 evita saltos de línea en textos */
+  gap: 20px;
+}
+
+
+.logo { width: 180px; height: auto; }
+.titulo{ text-align: center;
+  flex-grow: 1 ;
+}
+.titulo h1 { margin: 0; color: #f7f2fa; font-size: 300px; }
+.titulo h2 { margin: 0; color:#a584e4; font-size: 28px; font-weight: bold;}
+.titulo h3 { margin: 4px 0; font-size: 16px; color: #7c6583;
+}
+.titulo .linea-principal {
+    margin-top: 10px;
+    font-size: 30px;
+    color: #f7f2fa;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+.titulo .titulo-curso{
+  font-size: 38px;
+  color:#676567;
+}
+
+/* 👩‍🎓 SECCIONES */
+.caja {
+  background: linear-gradient(#000, #190118, #300441);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 1px auto;
+  max-width: 1700px;
+  box-shadow: 1 1 6px rgba(0,0,0,0.4);
+}
+.caja h2 { color: #e5d5ff;
+  font-family: 'Poppins', 'Gill Sans', Calibri, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+ }
+.datos-flex {
+  display: flex; justify-content: center;
+  align-items: center; flex-wrap: wrap;
+  gap: 50px; text-align: left;
+  font-family: 'Poppins', 'Gill Sans', Calibri, sans-serif;
+  font-size: 18px;
+}
+.foto {
+  width: 100px; border-radius: 50%; border: 2px solid #000;
+}
+
+/* 🔘 BOTONES */
+.unidades { text-align: center; margin: 30px 0; }
+.boton {
+  display: block; width: 70%; max-width: 700px;
+  margin: 10px auto; padding: 18px 0;
+  background:linear-gradient(#190118,#300441);
+  color: #dbc6ed;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold; text-align: left;
+  transition: 0.3s;
+}
+.boton:hover { background: #000000; }
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+  .header-contenido { padding: 0 5px; }
+  .logo { width: 90px; }
+  .titulo h1 { font-size: 18px; }
+  .titulo h2, .titulo .linea-principal{font-size: 20px; letter-spacing: 1px; font-weight: 700;} 
+  .titulo h3 { font-size: 10px; }
+  .titulo{
+    min-width: 0;
+  }
+  .boton { width: 90%; text-align: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌐 MENÚ -->
+<nav class="nav-simple">
+  <ul>
+    <li><a href="index.html">FINESI</a></li>
+    <li><a href="unidad1.html">UNIDAD I</a></li>
+    <li><a href="unidad2.html">UNIDAD II</a></li>
+  </ul>
+</nav>
+
+<!-- 🏫 ENCABEZADO -->
+<header>
+  <div class="header-contenido">
+    <img src="logo_unap.png" alt="Logo UNAP" class="logo">
+    <div class="titulo">
+      <div class="linea-principal">
+        Universidad Nacional del Altiplano-Puno
+      </div>
+      <h3>Facultad de Ingeniería Estadística e Informática</h3>
+      <h3>Escuela Profesional de Ingeniería Estadística e Informática</h3>
+      <div class="linea-principal">
+        Bienvenido a mi Portafolio
+      </div>
+      <div class="linea-principal titulo-curso">PROGRAMACION NUMERICA
+      </div> 
+    </div>
+    <img src="logo_finesi.png" alt="Logo Finesi" class="logo">
+  </div>
+</header>
+
+<!-- 👩‍🎓 SOBRE MÍ -->
+<section class="caja">
+  <h2>Sobre mí </h2>
+  <div class="datos-flex">
+    <img src="perfil_estudiante.jpg" alt="Foto estudiante" class="foto">
+    <div>
+      <h3><b>Nombre:</b> Quispe Ito Luz Leidy</h3>
+      <h3><b>Código:</b> 240291</h3>
+      <h3><b>Correo:</b> quispeitoluzleidy@gmail.com</h3>
+    </div>
+    <div>
+      <h3><b>Docente:</b> Torres Cruz Fred</h3>
+      <h3><b>Semestre:</b> 2025-II</h3>
+      <h3><b>Grupo:</b> A</h3>
+    </div>
+  </div>
+</section>
+
+<!-- 📘 INTRODUCCIÓN -->
+<section class="caja">
+  <h2>Introducción al curso</h2>
+  <p>
+  El conocimiento y la comprension son requisitos previos para la implementacion efectiva de cualquier herramienta. 
+  Sin importar cuan impresionante sea nuestro arsenal de herramientas, sera practicamente imposible reparar un automovil
+   si no entendemos como funciona. Esto es particularmente cierto cuando utilizamos computadoras para resolver problemas 
+   de ingenieria. Aunque tienen gran utilidad potencial, las computadoras son practicamente inutiles sin una comprension fundamental 
+   de como funcionan los sistemas de ingenieria.
+  </p>
+  <p>
+    La comprension inicial se obtiene por medios empiricos, es decir, mediante observacion y experimentacion. Sin embargo, aunque 
+    esta informacion derivada empiricamente es esencial, es solo la mitad de la historia. A traves de anos y años de observacion y
+     experimentacion, los ingenieros y cientificos han notado que ciertos aspectos de sus estudios empiricos ocurren repetidamente.
+      Este comportamiento general puede entonces expresarse como leyes fundamentales que esencialmente incorporan la sabiduria
+       acumulada de la experiencia pasada.
+  </p>
+</section>
+
+<!-- 🔘 UNIDADES -->
+<section class="unidades">
+  <a href="unidad1.html" class="boton">Unidad I</a>
+  <a href="unidad2.html" class="boton">Unidad II</a>
+</section>
+
+</body>
+</html>
+
