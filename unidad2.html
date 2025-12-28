@@ -296,6 +296,16 @@ iframe {
   font-family: "Calibri", "Gill Sans MT", sans-serif;
   margin: 20px;
 }
+
+.preview {
+    width: 90%;
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 </style>
 
 
@@ -344,7 +354,7 @@ iframe {
   <button class="boton" onclick="mostrarTrabajo('t12','Ejercicio Aplicado light house Apache jmeter')">Ejercicio Aplicado light house Apache jmeter</button>
   <button class="boton" onclick="mostrarTrabajo('t13','Poster Cientifico')">Poster Cientifica</button>
   <button class="boton" onclick="mostrarTrabajo('t14','Eigen Values')">Eigenvalores y Eigenvectores</button>
-  <button class="boton" onclick="mostrarTrabajo('t15','Introducción a Markov')">Practica Calificada</button>
+  <button class="boton" onclick="mostrarTrabajo('t15','Practica Calificada')">Introducción a Markov</button>
   <button class="boton" onclick="mostrarTrabajo('t16','Programacion Numerica')">Kook</button>
 
 </section>
@@ -866,9 +876,13 @@ manually implemented gradient descent. Simulated datasets of various sizes were 
 
 <!-- TRABAJO 13 -->
 <div id="t13" class="contenido">
+     <img src="poster2.png" 
+             alt="Vista previa del póster científico"
+             class="preview">
     <div class="descargas">
         <a href="poster cientifico (1).png" target="_blank">📄 Ver PDF</a>
-        <a href="metodo de puntofijo.py" download>⬇ Descargar Código R</a>
+      <a href="Example_poster_demonstrating_the_fancytikzposter_package.pdf" target="_blank">📄 Ver PDF</a>
+      
     </div>
     <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
 </div>
