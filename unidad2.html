@@ -297,6 +297,17 @@ iframe {
   margin: 20px;
 }
 
+#t15 {
+  text-align: left;
+}
+
+#t15 h2,
+#t15 h3,
+#t15 h4 {
+  text-align: center;
+}
+
+
 .preview {
     width: 90%;
     max-width: 1000px;
@@ -306,13 +317,130 @@ iframe {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-</style>
+/* 👩‍🎓 SECCIONES */
+.caja {
+  background: linear-gradient(#000, #190118, #300441);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1400px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+.caja h2 {
+  color: #ffffff;
+  font-family: 'Poppins', Calibri, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.datos-flex {
+  display: flex; justify-content: center;
+  align-items: center; flex-wrap: wrap;
+  gap: 50px; text-align: left;
+  font-family: 'Poppins', Calibri, sans-serif;
+  font-size: 18px;
+}
+.foto {
+  width: 160px; border-radius: 50%; border: 2px solid #000;
+}
+
+
+/* 🎯 BOTONES DINÁMICOS */
+.boton {
+  position: relative;
+  overflow: hidden;
+}
+
+.boton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(200,150,255,0.4),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.boton:hover::before {
+  left: 100%;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.unidades {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ===== FONDO ANIMADO PREMIUM ===== */
+#fondo-animado {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+
+  background: linear-gradient(
+    -45deg,
+    #020003,
+    #090014,
+    #1d0633,
+    #090014,
+    #020003
+  );
+  background-size: 700% 700%;
+  animation: fondoFluido 18s ease infinite;
+}
+
+@keyframes fondoFluido {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Lienzos */
+#particles, #numbers {
+  position: absolute;
+  inset: 0;
+}
+
+/* Asegura que el contenido esté encima */
+nav, header, section, footer, .contenido {
+  position: relative;
+  z-index: 2;
+}
+
+ 
+
 
 
 </style>
 </head>
 
 <body>
+  
+<!-- FONDO ANIMADO NUMÉRICO -->
+<div id="fondo-animado">
+  <canvas id="particles"></canvas>
+  <canvas id="numbers"></canvas>
+</div>
+
 
 <nav class="nav-simple">
   <ul>
@@ -340,26 +468,27 @@ iframe {
 
 <!-- BOTONES PRINCIPALES -->
 <section class="unidades" id="menuPrincipal">
-  <button class="boton" onclick="mostrarTrabajo('t1','Indice H  -  CTI Vitae')">Indice H - CTI Vitae </button>
-  <button class="boton" onclick="mostrarTrabajo('t2','Metodo de Biseccion ')">Metodo de Biseccion</button>
-  <button class="boton" onclick="mostrarTrabajo('t3','Metodo de la Secante  ')">Metodo de la Secante</button>
-  <button class="boton" onclick="mostrarTrabajo('t4','Metodo de Punto Fijo')">Metodo de punto Fijo</button>
-  <button class="boton" onclick="mostrarTrabajo('t5','Metodo de Regula Falsi')">Metodo de regula Falsi</button>
-  <button class="boton" onclick="mostrarTrabajo('t6','Gradiente de una Funcion')">gradiente de una funcion</button>
-  <button class="boton" onclick="mostrarTrabajo('t7','Gradientes comparación')">resumen del articulo</button>
-  <button class="boton" onclick="mostrarTrabajo('t8','Aplicación de Metodos Iterativos [Ejercicio Supervivencia] ')">Aplicación de Metodos Iterativos [Ejercicio Supervivencia] </button>
-  <button class="boton" onclick="mostrarTrabajo('t9','Lectura 30 - 10 -2025 (Resumen)')">Lectura-resumen</button>
-  <button class="boton" onclick="mostrarTrabajo('t10','Diferenciación Numerica [Ejercicios]  ')">Diferenciación Numerica [Ejercicios]</button>
-  <button class="boton" onclick="mostrarTrabajo('t11','Ejerccicios de Interpolacion Numerica')">Ejerccicios de Interpolacion Numerica</button>
-  <button class="boton" onclick="mostrarTrabajo('t12','Ejercicio Aplicado light house Apache jmeter')">Ejercicio Aplicado light house Apache jmeter</button>
-  <button class="boton" onclick="mostrarTrabajo('t13','Poster Cientifico')">Poster Cientifica</button>
-  <button class="boton" onclick="mostrarTrabajo('t14','Eigen Values')">Eigenvalores y Eigenvectores</button>
-  <button class="boton" onclick="mostrarTrabajo('t15','Practica Calificada')">Introducción a Markov</button>
-  <button class="boton" onclick="mostrarTrabajo('t16','Programacion Numerica')">Kook</button>
+  <button class="boton" onclick="mostrarTrabajo('t1','Indice H  -  CTI Vitae')">T.1- Indice H - CTI Vitae </button>
+  <button class="boton" onclick="mostrarTrabajo('t2','Metodo de Biseccion ')">T.2- Metodo de Biseccion</button>
+  <button class="boton" onclick="mostrarTrabajo('t3','Metodo de la Secante  ')">T.3- Metodo de la Secante</button>
+  <button class="boton" onclick="mostrarTrabajo('t4','Metodo de Punto Fijo')">T.4- Metodo de punto Fijo</button>
+  <button class="boton" onclick="mostrarTrabajo('t5','Metodo de Regula Falsi')">T.5- Metodo de regula Falsi</button>
+  <button class="boton" onclick="mostrarTrabajo('t6','Gradiente de una Funcion')">T.6- gradiente de una funcion</button>
+  <button class="boton" onclick="mostrarTrabajo('t7','Gradientes comparación')">T.7- resumen del articulo</button>
+  <button class="boton" onclick="mostrarTrabajo('t8','Aplicación de Metodos Iterativos [Ejercicio Supervivencia] ')">T.8-> Aplicación de Metodos Iterativos [Ejercicio Supervivencia] </button>
+  <button class="boton" onclick="mostrarTrabajo('t9','Lectura 30 - 10 -2025 (Resumen)')">T.9- Lectura-resumen</button>
+  <button class="boton" onclick="mostrarTrabajo('t10','Diferenciación Numerica [Ejercicios]  ')">T.10- Diferenciación Numerica [Ejercicios]</button>
+  <button class="boton" onclick="mostrarTrabajo('t11','Ejerccicios de Interpolacion Numerica')">T.11- Ejerccicios de Interpolacion Numerica</button>
+  <button class="boton" onclick="mostrarTrabajo('t12','Ejercicio Aplicado light house Apache jmeter')">T.12- Ejercicio Aplicado light house Apache jmeter</button>
+  <button class="boton" onclick="mostrarTrabajo('t13','Poster Cientifico')">T.13- Poster Cientifica</button>
+  <button class="boton" onclick="mostrarTrabajo('t14','Eigen Values')">T.14- Eigenvalores y Eigenvectores</button>
+  <button class="boton" onclick="mostrarTrabajo('t15','Practica Calificada')">T.15- Introducción a Markov</button>
+  <button class="boton" onclick="mostrarTrabajo('t16','Programacion Numerica')">T.16- Kook</button>
 
 </section>
 <!-- TRABAJO 1 -->
-<div id="t1" class="contenido">
+<div id="t1" class="contenido reveal">
+
   <div class="texto-legible">
     <h5>
        El índice h es una métrica bibliométrica que combina la cantidad de publicaciones de un investigador con el
@@ -955,31 +1084,136 @@ manually implemented gradient descent. Simulated datasets of various sizes were 
     <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
 </div>
 
+
 <!-- TRABAJO 15 -->
-<div id="t15" class="contenido">
-    <div class="descargas">
-        <a href="Eigenvalores_y_Eigenvectores (1).pdf" target="_blank">📄 Ver PDF</a>
+<div id="t15" class="contenido reveal">
+
+  <h2 class="titulo-h">Eigenvalues y Eigenvectors Aplicados</h2>
+  <h3>Análisis del Flujo de Turistas entre Destinos Principales de Puno</h3>
+
+  <div class="texto-legible">
+
+    <h3>1. Objetivo de la Práctica</h3>
+    <p>
+      Demostrar la aplicación práctica de <strong>eigenvalues (valores propios)</strong> y
+      <strong>eigenvectors (vectores propios)</strong> en un problema real de la región de
+      <strong>Puno</strong>: el análisis del flujo turístico en el <strong>Lago Titicaca</strong>.
+    </p>
+
+    <h4>Conceptos clave</h4>
+    <ul>
+      <li>Matrices de transición (Cadenas de Markov)</li>
+      <li>Distribución estacionaria</li>
+      <li>Eigenvalue dominante</li>
+      <li>Convergencia al equilibrio</li>
+    </ul>
+
+    <h4>Aplicaciones prácticas</h4>
+    <ul>
+      <li>Planificación de infraestructura turística</li>
+      <li>Optimización de rutas de transporte</li>
+      <li>Proyección de ingresos por destino</li>
+      <li>Diseño de paquetes turísticos</li>
+    </ul>
+
+    <hr>
+
+    <h3>2. Definición del Problema</h3>
+
+    <h4>Contexto</h4>
+    <p>
+      El <strong>Lago Titicaca</strong> es el principal atractivo turístico de la región de Puno.
+      Los turistas se desplazan entre distintos destinos con características específicas:
+    </p>
+
+    <ul>
+      <li><strong>Puno Ciudad (PC):</strong> Ciudad base con hoteles, restaurantes y servicios.</li>
+      <li><strong>Islas Uros (IU):</strong> Islas flotantes de totora, visita típica de medio día.</li>
+      <li><strong>Isla Taquile (IT):</strong> Reconocida por su textilería tradicional, visita de día completo.</li>
+      <li><strong>Isla Amantaní (IA):</strong> Turismo vivencial con estadía en casas de familias locales.</li>
+    </ul>
+
+    <h4>Preguntas de investigación</h4>
+    <ul>
+      <li>¿Cuál es la distribución de equilibrio de turistas entre estos destinos?</li>
+      <li>¿Qué destino actúa como el <em>hub</em> principal del sistema?</li>
+      <li>¿Qué tan rápido converge el sistema al equilibrio?</li>
+    </ul>
+
+    <hr>
+
+    <h3>3. Enfoque Matemático</h3>
+    <p>
+      El flujo de turistas se modela como una <strong>Cadena de Markov</strong> mediante una
+      <strong>matriz de transición</strong> \( T \), donde:
+    </p>
+
+    <p style="text-align:center; font-size:20px;">
+      <strong>T<sub>ij</sub> = P(moverse del destino i al destino j)</strong>
+    </p>
+
+    <p>
+      El <strong>eigenvector asociado al eigenvalue dominante (λ = 1)</strong> representa la
+      <strong>distribución estacionaria</strong> del sistema turístico.
+    </p>
+
+    <hr>
+
+    <h3>4. Construcción de la Matriz de Transición</h3>
+    <p>
+      La matriz de transición se construye a partir de:
+    </p>
+
+    <ul>
+      <li>Datos de operadores turísticos locales (2023–2024)</li>
+      <li>Patrones de paquetes turísticos más vendidos</li>
+      <li>Encuestas aplicadas a turistas en la región de Puno</li>
+    </ul>
+
+  </div>
+
+  <div class="descargas">
+        <a href="Practica_Ejercicio_1.pdf" target="_blank">📄 Ver PDF</a>
+        <a href="Practica_Ejercicio_2.pdf" target="_blank">📄 Ver PDF</a>
+        <a href="Practica_Ejercicio_3.pdf" target="_blank">📄 Ver PDF</a>
         <a href="Eigenvalores y Eigenvectores.R" download>⬇ Descargar R</a>
     </div>
-    <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+
+  <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
+
 </div>
+
+
 
 <!-- TRABAJO 16 -->
 <div id="t16" class="contenido">
     <div class="descargas">
         <a href="Eigenvalores_y_Eigenvectores (1).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="Eigenvalores_y_Eigenvectores (1).pdf" target="_blank">📄 Ver PDF</a>
+        <a href="Eigenvalores_y_Eigenvectores (1).pdf" target="_blank">📄 Ver PDF</a>
         <a href="Eigenvalores y Eigenvectores.R" download>⬇ Descargar R</a>
     </div>
     <button class="cerrar" onclick="cerrarTrabajo()">✖ Cerrar</button>
 </div>
 
 
-<!-- TRABAJO 14 -->
-<div id="t14" class="contenido">
-    <button class="index" onclick="cerrarTrabajo()">✖ Cerrar</button>
-</div>
+
+  <!-- BOTÓN DE REGRESAR -->
+    <div class="unidades">
+        <a href="index.html" class="boton">⬅ Regresar al Portafolio</a>
+    </div>
 
 
+<section id="contacto" class="caja">
+  <h2>Contacto</h2>
+  <p>📧 Email: quispeitoluzleidy@gmail.com</p>
+  <p>🐙 GitHub: <a href="https://github.com/luzleidy-13" target="_blank">github.com/luzleidy-13</a></p>
+  <p>FINESI</p>
+</section>
+
+<footer class="footer">
+  © 2025 Luz Leidy Quispe Ito · Portafolio Programacion Numerica 
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
@@ -1001,6 +1235,117 @@ function cerrarTrabajo() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
+
+<script>
+const reveals = document.querySelectorAll(".contenido, .boton, .caja");
+
+function revealOnScroll() {
+  for (let i = 0; i < reveals.length; i++) {
+    const windowHeight = window.innerHeight;
+    const revealTop = reveals[i].getBoundingClientRect().top;
+    const revealPoint = 80;
+
+    if (revealTop < windowHeight - revealPoint) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", revealOnScroll);
+</script>
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  function activarReveal() {
+    reveals.forEach(el => {
+      const ventanaAltura = window.innerHeight;
+      const distancia = el.getBoundingClientRect().top;
+
+      if (distancia < ventanaAltura - 100) {
+        el.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", activarReveal);
+  window.addEventListener("load", activarReveal);
+</script>
+
+
+<script>
+/* ===== PARTÍCULAS ===== */
+const pCanvas = document.getElementById("particles");
+const pCtx = pCanvas.getContext("2d");
+
+const nCanvas = document.getElementById("numbers");
+const nCtx = nCanvas.getContext("2d");
+
+function resize() {
+  pCanvas.width = nCanvas.width = window.innerWidth;
+  pCanvas.height = nCanvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+/* Partículas */
+const particles = Array.from({ length: 120 }, () => ({
+  x: Math.random() * pCanvas.width,
+  y: Math.random() * pCanvas.height,
+  r: Math.random() * 2 + 0.6,
+  vx: (Math.random() - 0.5) * 0.3,
+  vy: (Math.random() - 0.5) * 0.3,
+  a: Math.random()
+}));
+
+/* Números */
+const symbols = ["0", "1", "∑", "∫", "λ", "π", "Δ", "e", "x", "y"];
+const numbers = Array.from({ length: 60 }, () => ({
+  x: Math.random() * nCanvas.width,
+  y: Math.random() * nCanvas.height,
+  speed: Math.random() * 0.4 + 0.2,
+  size: Math.random() * 18 + 14,
+  char: symbols[Math.floor(Math.random() * symbols.length)],
+  alpha: Math.random() * 0.4 + 0.2
+}));
+
+function animate() {
+  pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+  nCtx.clearRect(0, 0, nCanvas.width, nCanvas.height);
+
+  /* Dibujar partículas */
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > pCanvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > pCanvas.height) p.vy *= -1;
+
+    pCtx.beginPath();
+    pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    pCtx.fillStyle = `rgba(190,150,255,${p.a})`;
+    pCtx.fill();
+  });
+
+  /* Dibujar números */
+  numbers.forEach(n => {
+    n.y -= n.speed;
+    if (n.y < -20) {
+      n.y = nCanvas.height + 20;
+      n.x = Math.random() * nCanvas.width;
+    }
+
+    nCtx.font = `${n.size}px monospace`;
+    nCtx.fillStyle = `rgba(180,140,255,${n.alpha})`;
+    nCtx.fillText(n.char, n.x, n.y);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
 
 </body>
 </html>
