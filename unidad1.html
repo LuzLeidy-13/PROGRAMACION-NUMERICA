@@ -218,10 +218,55 @@ iframe {
   to { opacity:1; transform: translateY(0); }
 }
 
+/* ===== FONDO ANIMADO PREMIUM ===== */
+#fondo-animado {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+
+  background: linear-gradient(
+    -45deg,
+    #020003,
+    #090014,
+    #1d0633,
+    #090014,
+    #020003
+  );
+  background-size: 700% 700%;
+  animation: fondoFluido 18s ease infinite;
+}
+
+@keyframes fondoFluido {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Lienzos */
+#particles, #numbers {
+  position: absolute;
+  inset: 0;
+}
+
+/* Asegura que el contenido esté encima */
+nav, header, section, footer, .contenido {
+  position: relative;
+  z-index: 2;
+}
+
+
 </style>
 </head>
 
 <body>
+
+  <!-- FONDO ANIMADO NUMÉRICO -->
+<div id="fondo-animado">
+  <canvas id="particles"></canvas>
+  <canvas id="numbers"></canvas>
+</div>
+
 
 <!-- 🌐 MENÚ -->
 <nav class="nav-simple">
@@ -436,6 +481,78 @@ function cerrarTrabajo() {
   titulo.textContent = "";
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+</script>
+<script>
+/* ===== PARTÍCULAS ===== */
+const pCanvas = document.getElementById("particles");
+const pCtx = pCanvas.getContext("2d");
+
+const nCanvas = document.getElementById("numbers");
+const nCtx = nCanvas.getContext("2d");
+
+function resize() {
+  pCanvas.width = nCanvas.width = window.innerWidth;
+  pCanvas.height = nCanvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+/* Partículas */
+const particles = Array.from({ length: 120 }, () => ({
+  x: Math.random() * pCanvas.width,
+  y: Math.random() * pCanvas.height,
+  r: Math.random() * 2 + 0.6,
+  vx: (Math.random() - 0.5) * 0.3,
+  vy: (Math.random() - 0.5) * 0.3,
+  a: Math.random()
+}));
+
+/* Números */
+const symbols = ["0", "1", "∑", "∫", "λ", "π", "Δ", "e", "x", "y"];
+const numbers = Array.from({ length: 60 }, () => ({
+  x: Math.random() * nCanvas.width,
+  y: Math.random() * nCanvas.height,
+  speed: Math.random() * 0.4 + 0.2,
+  size: Math.random() * 18 + 14,
+  char: symbols[Math.floor(Math.random() * symbols.length)],
+  alpha: Math.random() * 0.4 + 0.2
+}));
+
+function animate() {
+  pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+  nCtx.clearRect(0, 0, nCanvas.width, nCanvas.height);
+
+  /* Dibujar partículas */
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > pCanvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > pCanvas.height) p.vy *= -1;
+
+    pCtx.beginPath();
+    pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    pCtx.fillStyle = `rgba(190,150,255,${p.a})`;
+    pCtx.fill();
+  });
+
+  /* Dibujar números */
+  numbers.forEach(n => {
+    n.y -= n.speed;
+    if (n.y < -20) {
+      n.y = nCanvas.height + 20;
+      n.x = Math.random() * nCanvas.width;
+    }
+
+    nCtx.font = `${n.size}px monospace`;
+    nCtx.fillStyle = `rgba(180,140,255,${n.alpha})`;
+    nCtx.fillText(n.char, n.x, n.y);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 
 </body>
